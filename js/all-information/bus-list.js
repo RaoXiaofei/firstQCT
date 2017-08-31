@@ -13,6 +13,16 @@ function getBusInfor(){
 		data:{
 			"Token": Token
 		},
+		error:function(){
+			layer.open({
+				content: "请先登录",
+				title: '温馨提示',
+				area: ['320px', '180px'],
+				success: function(layer) {
+					layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+				},
+			});
+		},
 		success:function(data){
 			if(data.Status == 1){
 //				console.log(data.Result);

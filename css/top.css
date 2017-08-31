@@ -163,6 +163,7 @@
     height: 45px;
     border-radius: 8px;
     background-color: #FF6146;
+    border: 1px solid #ff6146;
 }
 .login-button:visited{
 	background-color: #FF6146 !important;

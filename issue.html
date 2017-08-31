@@ -41,7 +41,7 @@
 		  								onfocus="if(placeholder=='验证码')placeholder=''" onblur="if(!placeholder)placeholder='验证码'">
 		  							<button type="button" class="btn btn-default get-code" id="get-code" style="width: 90px;font-size: 10px;"><span class="get-codetext">获取验证码</span></button>
 		  							<br />
-		  							<button type="button" class="btn btn-default login-button" id="login-button" onclick="login()"><span class="login-buttontext">登录</span></button>						
+		  							<button type="button" class="login-button" id="login-button" onclick="login()"><span class="login-buttontext">登录</span></button>						
 				           		</div>      
 				        	</div>
 				    	</div>
@@ -84,7 +84,7 @@
 						</ul>
 					</div>
 					<a href="issue.html"><span class="top-text05">发布</span></a>
-					<a href="all-information.html"><span class="top-text05">个人中心</span></a>
+					<a href="all-information.html#identify-information"><span class="top-text05">个人中心</span></a>
 				</div>
 				<div class="nav_text02">
 					<input class="search-frame" type="text" id="keywords" placeholder="请输入关键字"
@@ -110,91 +110,13 @@
 			<li class="issuetop-text01">发布类型：</li>
 			<li>
 				<select class="form-control" id="select-frame01" onchange="SelectCon(this)">
-					<option value="issue-recruit"><span class="issuetop-text02">招聘信息</span></option>
 					<option value="issue-resume"><span class="issuetop-text02">简历信息</span></option>
 					<option value="issue-provide"><span class="issuetop-text02">供人信息</span></option>
 					<option value="issue-rent"><span class="issuetop-text02">周边租房</span></option>
-					<option value="issue-summer"><span class="issuetop-text02">暑假工信息</span></option>
-					<option value="issue-winner"><span class="issuetop-text02">寒假工信息</span></option>
-					<option value="issue-short"><span class="issuetop-text02">短期工信息</span></option>
-					<option value="issue-abroad"><span class="issuetop-text02">出国打工信息</span></option>
 					<option value="issue-bus"><span class="issuetop-text02">全国大巴信息</span></option>
 				</select>
 			</li>
 		</ul>
-	</div>
-	
-	<!--发布招聘信息-->
-	<div id="issue-recruit" class="TableCon">
-		<!--主标题：招聘信息-->
-		<div class="container">
-			<div class="row" id="guess">
-				<div class="col-md-2" id="line"><span class="index-text03">招聘信息</span></div>
-				<div class="col-md-10"></div>
-			</div>
-		</div>	
-		<!--详细招聘信息-->
-		<div class="container">
-			<ul class="issue-top">
-				<li class="issuetop-text01">职位：</li>
-				<li>
-					<select class="form-control recruit-select01" id="recruit-select01" onchange="Jobs(this.value)">
-						<!--<option><span class="issuetop-text03">销售类</span></option>-->
-					</select>
-				</li>
-				<li>
-					<select class="form-control recruit-select02" id="recruit-select02">
-						<!--<option value="value01"><span class="issuetop-text03">销售总监</span></option>-->
-					</select>
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">薪资：</li>
-				<li>
-					<input type="text" class="input-text01" id="recruit-salary"/>
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">所在地区：</li>
-				<!--省-->
-				<li>
-					<select id="issue-recruitcmbProvince" name="cmbProvince" class="select-frame02"><select>  
-                    <select id="issue-recruitcmbCity" name="cmbCity" class="select-frame02"><select>  
-                    <select id="issue-recruitcmbArea" name="cmbArea" class="select-frame02"><select> 
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01" >详细地址：</li>
-				<li>
-					<input type="text" class="input-text01" id="recruit-address"/>
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text06">职位描述：</li>
-				<li>
-					<textarea class="input-textarea01" id="recruit-describe"></textarea>
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text06">要求：</li>
-				<li>
-					<textarea class="input-textarea01" id="recruit-require"></textarea>
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">公司福利：</li>
-				<li class="issuetop-benefits"  id="recuit-wel">
-					<!--<span class="recWelfare-text"　id = "recWelfareID">免费零食</span>
-					<span class="recWelfare-text"　id = "recWelfareID">免费零食</span>
-					<span class="recWelfare-text"　id = "recWelfareID">免费零食</span>-->
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li>
-					<button type="button" class="btn btn-default" id="issue-recruit-button"><span class="issuetop-text04">发布</span></button>
-				</li>
-			</ul>
-		</div>		
 	</div>
 	
 	<!--发布简历信息-->
@@ -441,265 +363,7 @@
 			</ul>
 		</div>		
 	</div>
-		
-	<!--发布暑假工信息-->
-	<div id="issue-summer" class="TableCon">
-		<!--主标题：暑假工-->
-		<div class="container">
-			<div class="row" id="guess">
-				<div class="col-md-2" id="line"><span class="index-text03">暑假工</span></div>
-				<div class="col-md-10"></div>
-			</div>
-		</div>	
-		<!--详细暑假工信息-->
-		<div class="container">
-			<ul class="issue-top">
-				<li class="issuetop-text01">打工名称：</li>
-				<li>
-					<input type="text" class="input-text01" id="summer-name"/>
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">所在地区：</li>
-				<!--省-->
-				<li>
-					<select id="issue-summercmbProvince" name="cmbProvince" class="select-frame02"><select>  
-                    <select id="issue-summercmbCity" name="cmbCity" class="select-frame02"><select>  
-                    <select id="issue-summercmbArea" name="cmbArea" class="select-frame02"><select> 
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">详细地址：</li>
-				<li>
-					<input type="text" class="input-text01" id="summer-address"/>
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text06">打工介绍：</li>
-				<li>
-					<textarea class="input-textarea01" id="summer-intro"></textarea>
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">价目表：</li>
-				<li class="issuetop-img01" id="summerImage">
-					<input type="file" id="summerImge">
-        			<img src="assets/添加.png" alt="" id="summerImga">
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">图片：</li>
-				<li class="issuetop-img01" id="summInforImage">
-					<input type="file" multiple="multiple" id="summInforImge">
-        			<img src="assets/添加.png" alt="" id="summInforImga">
-        			<img src="assets/添加.png" alt="" >
-        			<img src="assets/添加.png" alt="">
-        			<img src="assets/添加.png" alt="">
-        			<img src="assets/添加.png" alt="">
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li>
-					<button type="button" class="btn btn-default" id="issue-summer-button"><span class="issuetop-text04">发布</span></button>
-				</li>
-			</ul>
-		</div>		
-	</div>
 	
-	<!--发布寒假工信息-->
-	<div id="issue-winner" class="TableCon">
-		<!--主标题：寒假工-->
-		<div class="container">
-			<div class="row" id="guess">
-				<div class="col-md-2" id="line"><span class="index-text03">寒假工</span></div>
-				<div class="col-md-10"></div>
-			</div>
-		</div>	
-			
-		<!--详细寒假工信息-->
-		<div class="container">
-			<ul class="issue-top">
-				<li class="issuetop-text01">打工名称：</li>
-				<li>
-					<input type="text" class="input-text01" id="winner-name"/>
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">所在地区：</li>
-				<!--省-->
-				<li>
-					<select id="issue-winnercmbProvince" name="cmbProvince" class="select-frame02"><select>  
-                    <select id="issue-winnercmbCity" name="cmbCity" class="select-frame02"><select>  
-                    <select id="issue-winnercmbArea" name="cmbArea" class="select-frame02"><select> 
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">详细地址：</li>
-				<li>
-					<input type="text" class="input-text01" id="winner-address"/>
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text06">打工介绍：</li>
-				<li>
-					<textarea class="input-textarea01" id="winner-intro"></textarea>
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">价目表：</li>
-				<li class="issuetop-img01" id="winnImage">
-					<input type="file" id="winnImge">
-        			<img src="assets/添加.png" alt="" id="winnImga">
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">图片：</li>
-				<li class="issuetop-img01" id="winnInforImage">
-					<input type="file" multiple="multiple" id="winnInforImge">
-        			<img src="assets/添加.png" alt="" id="winnInforImga">
-        			<img src="assets/添加.png" alt="" id="winnInforImga1">
-        			<img src="assets/添加.png" alt="" id="winnInforImga2">
-        			<img src="assets/添加.png" alt="" id="winnInforImga3">
-        			<img src="assets/添加.png" alt="" id="winnInforImga4">
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li>
-					<button type="button" class="btn btn-default" id="issue-winner-button"><span class="issuetop-text04">发布</span></button>
-				</li>
-			</ul>
-		</div>		
-	</div>
-	
-	<!--发布短期工信息-->
-	<div id="issue-short" class="TableCon">
-		<!--主标题：短期工-->
-		<div class="container">
-			<div class="row" id="guess">
-				<div class="col-md-2" id="line"><span class="index-text03">短期工</span></div>
-				<div class="col-md-10"></div>
-			</div>
-		</div>	
-		<!--详细短期工信息-->
-		<div class="container">
-			
-			<ul class="issue-top">
-				<li class="issuetop-text01">打工名称：</li>
-				<li>
-					<input type="text" class="input-text01" id="short-name"/>
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">所在地区：</li>
-				<!--省-->
-				<li>
-					<select id="issue-shortcmbProvince" name="cmbProvince" class="select-frame02"><select>  
-                    <select id="issue-shortcmbCity" name="cmbCity" class="select-frame02"><select>  
-                    <select id="issue-shortcmbArea" name="cmbArea" class="select-frame02"><select> 
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">详细地址：</li>
-				<li>
-					<input type="text" class="input-text01" id="short-address"/>
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text06">打工介绍：</li>
-				<li>
-					<textarea class="input-textarea01" id="short-intro"></textarea>
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">价目表：</li>
-				<li class="issuetop-img01" id="shortImage">
-					<input type="file" id="shortImge">
-        			<img src="assets/添加.png" alt="" id="shortImga">
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">图片：</li>
-				<li class="issuetop-img01" id="shortInforImage">
-					<input type="file" multiple="multiple" id="shortInforImge">
-        			<img src="assets/添加.png" alt="" id="shortInforImga">
-        			<img src="assets/添加.png" alt="">
-        			<img src="assets/添加.png" alt="">
-        			<img src="assets/添加.png" alt="">
-        			<img src="assets/添加.png" alt="">
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li>
-					<button type="button" class="btn btn-default" id="issue-short-button"><span class="issuetop-text04">发布</span></button>
-				</li>
-			</ul>
-		</div>		
-	</div>
-	
-	<!--发布出国打工信息-->
-	<div id="issue-abroad" class="TableCon">
-		<!--主标题：出国打工-->
-		<div class="container">
-			<div class="row" id="guess">
-				<div class="col-md-2" id="line"><span class="index-text03">出国打工</span></div>
-				<div class="col-md-10"></div>
-			</div>
-		</div>	
-		<!--详细出国打工信息-->
-		<div class="container">
-			<ul class="issue-top">
-				<li class="issuetop-text01">打工名称：</li>
-				<li>
-					<input type="text" class="input-text01" id="abroad-name"/>
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">所在地区：</li>
-				<!--省-->
-				<li>
-					<select id="issue-abroadcmbProvince" name="cmbProvince" class="select-frame02"><select>  
-                    <select id="issue-abroadcmbCity" name="cmbCity" class="select-frame02"><select>  
-                    <select id="issue-abroadcmbArea" name="cmbArea" class="select-frame02"><select> 
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">详细地址：</li>
-				<li>
-					<input type="text" class="input-text01" id="abroad-address"/>
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text06">打工介绍：</li>
-				<li>
-					<textarea class="input-textarea01" id="abroad-intro"></textarea>
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">价目表：</li>
-				<li class="issuetop-img01" id="abroadImage">
-					<input type="file" id="abroadImge">
-        			<img src="assets/添加.png" alt="" id="abroadImga">
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li class="issuetop-text01">图片：</li>
-				<li class="issuetop-img01" id="abroadInforImage">
-					<input type="file" multiple="multiple" id="abroadInforImge">
-        			<img src="assets/添加.png" alt="" id="abroadInforImga">
-        			<img src="assets/添加.png" alt="">
-        			<img src="assets/添加.png"  alt="">
-        			<img src="assets/添加.png" alt="">
-        			<img src="assets/添加.png" alt="">
-				</li>
-			</ul>
-			<ul class="issue-top">
-				<li>
-					<button type="button" class="btn btn-default" id="issue-abroad-button"><span class="issuetop-text04">发布</span></button>
-				</li>
-			</ul>
-		</div>		
-	</div>	
-		
 	<!--发布全国大巴信息-->
 	<div id="issue-bus" class="TableCon">
 		<!--主标题：全国大巴-->
@@ -755,6 +419,7 @@
 	<include src="bottom.html"></include>
 </body>
 	<script src="js/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="layer/layer.js" ></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/include.js"></script>
     <script src="js/urlf.js"></script>
@@ -762,9 +427,6 @@
 	<script src="js/html5shiv.js"></script>
 	<script src="js/jQuery.md5.js"></script>
     <script src="js/jsAddress.js"></script>
-	<script type="text/javascript">
-		addressInit('issue-recruitcmbProvince', 'issue-recruitcmbCity', 'issue-recruitcmbArea');
-	</script>
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=GAGiz9gdoRfTpImL6A2RZYxH	"></script>
 	<script src="js/kuCity.js"></script>
     <script>

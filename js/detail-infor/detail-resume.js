@@ -24,8 +24,18 @@ $.ajax({
 	data:{
 		"Token":Token
 	},
+	error:function(data){
+		layer.open({
+			content: "请先登录！",
+			title: '温馨提示',
+			area: ['320px', '180px'],
+			success: function(layer) {
+				layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+			},
+		});
+	},
 	success:function(data){
-		console.log(data.Result);
+//		console.log(data.Result);
 		var re = data.Result;
 		resume1 += '<span class="work-line" style="float: right;"></span>'
 		resume1 += '<br />'

@@ -25,7 +25,7 @@ $.ajax({
 	url:urlf+"api/Company/PositionDetail?id="+id+"&lng=0&lat=0",
 	async:true,
 	success:function(data){
-		console.log(data.Result)
+//		console.log(data.Result)
 		var re = data.Result;
 		
 		detail += '<span class="work-line" style="float: right; cursor: pointer;" onclick = "ReportThis()">'

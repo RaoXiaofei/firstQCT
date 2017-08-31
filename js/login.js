@@ -25,6 +25,9 @@ function login(e) {
 			"Lat": 0,
 			"ID": 0
 		},
+		error:function(){
+			alert("请正确输入");
+		},
 		success: function(data) {
 			if(data.Status == 1) {
 				alert("登录成功!");
