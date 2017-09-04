@@ -9,7 +9,7 @@ function getProvideList(){
 	var allP="";
 	$.ajax({
 		type:"get",
-		url:urlf+"api/Release/MyRelease?pageIndex=1&pageSize=30&type=4",
+		url:urlf+"api/Release/MyRelease?pageIndex=1&pageSize=10000&type=4",
 		async:true,
 		data:{
 			"Token":token
@@ -72,7 +72,14 @@ function ShowProvideInfor(inforID){
 //				console.log(data.Result);
 				var re = data.Result;
 				//显示省市区
-//				ShowPAR("providecmbProvince", "providecmbCity", "providecmbArea", re.Province, re.City, re.Region);
+				$("#distpicker-provide-infor").distpicker({
+					province: re.Province,
+					city: re.City,
+					district: re.Region
+				})
+				$("#providecmbProvince").attr("disabled",true);
+				$("#providecmbCity").attr("disabled",true);
+				$("#providecmbArea").attr("disabled",true);
 				
 				na += '<input type="text" class="input-text01" id="provide-worktype" value="'+re.WorkType+'" readonly="readonly"/>'
 				add += '<input type="text" class="input-text01" id="provide-address" value="'+re.Address+'" readonly="readonly"/>'
@@ -80,9 +87,6 @@ function ShowProvideInfor(inforID){
 				count += '<input type="text" class="input-text01" id="provide-count" value="'+re.Count+'" readonly="readonly"/>'
 				linkna += '<input type="text" class="input-text01" id="provide-name"value="'+re.Name+'" readonly="readonly"/>'
 				linkpho += '<input type="text" class="input-text01" id="provide-phone"value="'+re.Phone+'" readonly="readonly"/>'
-				pro += '<input type="text" class="input-text02" id="provideProvince" value="'+re.Province+'" readonly="readonly"/>'
-				pro +=	'<input type="text" class="input-text02" id="provideCity" value="'+re.City+'" readonly="readonly"/>'
-				pro +=	'<input type="text" class="input-text02" id="provideArea" value="'+re.Region+'" readonly="readonly"/>'
 				
 				$("#provideName").html(na);
 				$("#provideAddress").html(add);
@@ -90,7 +94,6 @@ function ShowProvideInfor(inforID){
 				$("#provideCount").html(count);
 				$("#provideLinkman").html(linkna);
 				$("#provideLinkphone").html(linkpho);
-				$("#showPCR2").html(pro);
 			}
 			else{
 				alert(data.Result);
@@ -103,9 +106,9 @@ function ShowProvideInfor(inforID){
 				$(this).hide();
 				$("#SaveProvide").show();
 				$('input').attr("readonly",false);
-				$("#showPCR2").replaceWith('<li id="showPCR2"><select id="providecmbProvince" name="cmbProvince" class="select-frame02"><select>   <select id="providecmbCity" name="cmbCity" class="select-frame02"><select>  <select id="providecmbArea" name="cmbArea" class="select-frame02"><select></li>');
-				addressInit('providecmbProvince', 'providecmbCity', 'providecmbArea');	
-				ShowPAR("providecmbProvince", "providecmbCity", "providecmbArea", re.Province, re.City, re.Region);
+				$("#providecmbProvince").attr("disabled",false);
+				$("#providecmbCity").attr("disabled",false);
+				$("#providecmbArea").attr("disabled",false);
 			})
 		}
 	});

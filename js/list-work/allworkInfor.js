@@ -15,8 +15,7 @@ var city = "";
  */
 var isNext = false;
 var isLoading = false;
-var city1 = unescape(getCookie("city"))
-var cityxity = city1.split("市")[0];
+var cityxity = unescape(getCookie("city"))
 
 
 var changeC = getCookie("change");

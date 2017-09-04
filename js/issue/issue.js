@@ -3,7 +3,11 @@
  */
 $('.TableCon').hide();
 $('#issue-resume').show();
-addressInit("issue-resumecmbProvince", "issue-resumecmbCity", "issue-resumecmbArea");
+$('#distpicker-resume').distpicker({
+    province: '',
+    city: '',
+    district: ''
+  });
 function SelectCon(e){
 //	console.log(e.value);
 	var TableCon = $('.TableCon');
@@ -11,13 +15,14 @@ function SelectCon(e){
 	$('.TableCon').hide();
 	$('#'+e.value).show();
 	
-	var Pro = e.value+'cmbProvince';//创建一个动态的省
-	
-	var City = e.value+'cmbCity';
-	
-	var Area = e.value+'cmbArea';
-	
-	addressInit(Pro, City, Area);
+	var dispicker = e.value;
+	var disss = dispicker.split("-")[1];
+	$('#distpicker-'+ disss).distpicker({
+	    province: '',
+	    city: '',
+	    district: ''
+	  });
+	  
 	Jobs('销售');
 }
 var city = unescape(getCookie("city"));
@@ -30,6 +35,7 @@ else{
 	atCity.innerHTML = unescape(getCookie("change"));
 	this.city = unescape(changeC);
 }
+
 /*
  * 获取职位名称和职位类名
  */

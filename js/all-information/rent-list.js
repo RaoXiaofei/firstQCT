@@ -1,4 +1,8 @@
 var rentID = ''
+
+var rentPrO = ''
+var rentCit = ''
+var rentReg = ''
 /*
  * 获取周边住房列表
  */
@@ -6,10 +10,9 @@ var Token = getCookie("token");
 function getRentList(){
 	var allRen = '';
 	
-	
 	$.ajax({
 		type:"get",
-		url:urlf+"api/Release/MyRelease?pageIndex=1&pageSize=30&type=7",
+		url:urlf+"api/Release/MyRelease?pageIndex=1&pageSize=10000&type=7",
 		async:true,
 		data:{
 			"Token":Token
@@ -72,10 +75,15 @@ function ShowRentInfor(inforID){
 //				console.log(data.Result);	
 				var re = data.Result;
 				//显示省市区
-//				ShowPAR("rentcmbProvince", "rentcmbCity", "rentcmbArea", re.Province, re.City, re.Region);
-				pro += '<input type="text" class="input-text02" id="rentProvince" value="'+re.Province+'" readonly="readonly"/>'
-				pro +=	'<input type="text" class="input-text02" id="rentCity" value="'+re.City+'" readonly="readonly"/>'
-				pro +=	'<input type="text" class="input-text02" id="rentArea" value="'+re.Region+'" readonly="readonly"/>'
+				$("#distpicker-rent-infor").distpicker({
+					province: re.Province,
+					city: re.City,
+					district: re.Region
+				})
+				$("#rentcmbProvince").attr("disabled",true);
+				$("#rentcmbCity").attr("disabled",true);
+				$("#rentcmbArea").attr("disabled",true);
+				
 				na += '<input type="text" class="input-text01" id="rent-name" value="'+re.Name+'"/>'
 				addr += '<input type="text" class="input-text01" id="rent-address" value="'+re.Address+'"/>'
 				intro += '<textarea class="input-textarea01" id="rent-intro">'+re.Introduce+'</textarea>'
@@ -91,7 +99,6 @@ function ShowRentInfor(inforID){
 				$("#rentName").html(na);
 				$("#rentAddress").html(addr);
 				$("#rentIntro").html(intro);
-				$("#showPCR3").html(pro);
 				$("#updateRentInforImage").html(img);
 			}
 			else{
@@ -111,9 +118,9 @@ function ShowRentInfor(inforID){
 				
 				$("input").attr("readonly",false);
 				$('textarea').attr("readonly",false);
-				$("#showPCR3").replaceWith('<li id="showPCR3"><select id="rentcmbProvince" name="cmbProvince" class="select-frame02"><select>   <select id="rentcmbCity" name="cmbCity" class="select-frame02"><select>  <select id="rentcmbArea" name="cmbArea" class="select-frame02"><select></li>');
-				addressInit('rentcmbProvince', 'rentcmbCity', 'rentcmbArea');
-				ShowPAR("rentcmbProvince", "rentcmbCity", "rentcmbArea", re.Province, re.City, re.Region);	
+				$("#rentcmbProvince").attr("disabled",false);
+				$("#rentcmbCity").attr("disabled",false);
+				$("#rentcmbArea").attr("disabled",false);
 			})
 			
 		}
@@ -164,10 +171,9 @@ $("#SaveRent").click(function(){
 				$("#SaveRent").hide();
 				$("input").attr("readonly",true);
 				$('textarea').attr("readonly",true);
-				$("#rentcmbProvince").attr("readonly",true);
-				$("#rentcmbCity").attr("readonly",true);
-				$("#rentcmbArea").attr("readonly",true);
-				window.location.reload();
+				$("#rentcmbProvince").attr("disabled",true);
+				$("#rentcmbCity").attr("disabled",true);
+				$("#rentcmbArea").attr("disabled",true);
 			}
 			else{
 				alert(data.Result);

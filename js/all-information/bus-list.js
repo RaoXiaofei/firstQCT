@@ -8,7 +8,7 @@ function getBusInfor(){
 	
 	$.ajax({
 		type:"get",
-		url:urlf+"api/Release/MyRelease?pageIndex=1&pageSize=30&type=5",
+		url:urlf+"api/Release/MyRelease?pageIndex=1&pageSize=10000&type=5",
 		async:true,
 		data:{
 			"Token": Token
@@ -69,8 +69,14 @@ function ShowBusInfor(inforID){
 //	    		console.log(data.Result);
 	    		var re = data.Result;
 	    		//显示省市区
-//	    		ShowPAR("buscmbProvince", "buscmbCity", "buscmbArea", re.Province, re.City, re.Region)
-	    		
+	    		$("#distpicker-bus-infor").distpicker({
+					province: re.Province,
+					city: re.City,
+					district: re.Region
+				})
+	    		$("#buscmbProvince").attr("disabled",true);
+	    		$("#buscmbCity").attr("disabled",true);
+	    		$("#buscmbArea").attr("disabled",true);
 	    		pro+= '<input type="text" class="input-text02" id="busProvince" value="'+re.Province+'" readonly="readonly"/>'
 				pro+= '<input type="text" class="input-text02" id="busCity" value="'+re.City+'" readonly="readonly"/>'
 				pro+= '<input type="text" class="input-text02" id="busArea" value="'+re.Region+'" readonly="readonly"/>'
@@ -94,9 +100,9 @@ function ShowBusInfor(inforID){
 				$("#SaveBus").show();
 				$('input').attr("readonly",false);
 				$('textarea').attr("readonly",false);
-				$("#showPCR8").replaceWith('<li id="showPCR8"><select id="buscmbProvince" name="cmbProvince" class="select-frame02"><select>   <select id="buscmbCity" name="cmbCity" class="select-frame02"><select>  <select id="buscmbArea" name="cmbArea" class="select-frame02"><select></li>');
-				addressInit('buscmbProvince', 'buscmbCity', 'buscmbArea');
-				ShowPAR("buscmbProvince", "buscmbCity", "buscmbArea", re.Province, re.City, re.Region);	
+				$("#buscmbProvince").attr("disabled",false);
+	    		$("#buscmbCity").attr("disabled",false);
+	    		$("#buscmbArea").attr("disabled",false);
 			})
 	    }
 	});
@@ -133,11 +139,10 @@ $("#SaveBus").click(function(){
 				alert("修改成功");
 				$("#SaveBus").hide();
 				$('input').attr("readonly",true);
-				$('#buscmbProvince').attr("disabled","disabled");
-				$('#buscmbCity').attr("disabled","disabled");
-				$('#buscmbArea').attr("disabled","disabled");
 				$('textarea').attr("readonly",true);
-				window.location.reload();
+				$("#buscmbProvince").attr("disabled",true);
+	    		$("#buscmbCity").attr("disabled",true);
+	    		$("#buscmbArea").attr("disabled",true);
 			}
 			else{
 				alert(data.Result);

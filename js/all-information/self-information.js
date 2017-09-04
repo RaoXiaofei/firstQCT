@@ -124,38 +124,49 @@ $("#cerfication-button").click(function() {
 	var Name = $("#self-name").val();
 	var Number = $("#self-number").val();
 	var Token = getCookie("token");
-
-	$.ajax({
-		type: "POST",
-		url: urlf + "api/User/PCAuthentication",
-		async: true,
-		data: {
-			"Name": Name,
-			"IDCard": Number,
-			"Token": Token
-		},
-		success: function(data) {
-			if(data.Status == 1) {
-				layer.open({
-					content: data.Result,
-					title: '温馨提示',
-					area: ['320px', '180px'],
-					success: function(layer) {
-						layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
-					},
-				});
-			} else {
-				layer.open({
-					content: data.Result,
-					title: '温馨提示',
-					area: ['320px', '180px'],
-					success: function(layer) {
-						layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
-					},
-				});
+	if(Name == "" || Number == ""){
+		layer.open({ 
+			content: "请输入姓名",
+			title: '温馨提示',
+			area: ['320px', '180px'],
+			success: function(layer) {
+				layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+			},
+		});
+	}
+	else{
+		$.ajax({
+			type: "POST",
+			url: urlf + "api/User/PCAuthentication",
+			async: true,
+			data: {
+				"Name": Name,
+				"IDCard": Number,
+				"Token": Token
+			},
+			success: function(data) {
+				if(data.Status == 1) {
+					layer.open({
+						content: data.Result,
+						title: '温馨提示',
+						area: ['320px', '180px'],
+						success: function(layer) {
+							layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+						},
+					});
+				} else {
+					layer.open({
+						content: data.Result,
+						title: '温馨提示',
+						area: ['320px', '180px'],
+						success: function(layer) {
+							layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+						},
+					});
+				}
 			}
-		}
-	});
+		});
+	}
 })
 
 /*
@@ -176,48 +187,60 @@ $("#company-comfirm").click(function() {
 	var Longitude = 0;
 	var Latitude = 0;
 	var Token = getCookie("token");
-
-	$.ajax({
-		type: "post",
-		url: urlf + "api/User/PCEnterpriseCertification",
-		async: true,
-		data: {
-			"CompanyName": CompanyName,
-			"Province": Province,
-			"City": City,
-			"Region": Area,
-			"CompanyAddress": Address,
-			"CompanyScale": CompanySize,
-			"CompanyNature": CompanyNature,
-			"CompanyIndustry": CompanyTrade,
-			"CompanyIntroduce": CompanyIntro,
-			"Longitude": 0,
-			"Latitude": 0,
-			"QQNumber": CompanyQQ,
-			"Token": Token
-		},
-		success: function(data) {
-			if(data.Status == 1) {
-				layer.open({
-					content: data.Result,
-					title: '温馨提示',
-					area: ['320px', '180px'],
-					success: function(layer) {
-						layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
-					},
-				});
-			} else {
-				layer.open({
-					content: data.Result,
-					title: '温馨提示',
-					area: ['320px', '180px'],
-					success: function(layer) {
-						layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
-					},
-				});
+	
+	if(CompanyName == '' || Address == '' || CompanySize == '' || CompanyNature == '' || CompanyTrade == '' || CompanyIntro == '' || CompanyQQ == ''){
+		layer.open({
+			content: "请确定是否输入完整？",
+			title: '温馨提示',
+			area: ['320px', '180px'],
+			success: function(layer) {
+				layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+			},
+		});
+	}
+	else{
+		$.ajax({
+			type: "post",
+			url: urlf + "api/User/PCEnterpriseCertification",
+			async: true,
+			data: {
+				"CompanyName": CompanyName,
+				"Province": Province,
+				"City": City,
+				"Region": Area,
+				"CompanyAddress": Address,
+				"CompanyScale": CompanySize,
+				"CompanyNature": CompanyNature,
+				"CompanyIndustry": CompanyTrade,
+				"CompanyIntroduce": CompanyIntro,
+				"Longitude": 0,
+				"Latitude": 0,
+				"QQNumber": CompanyQQ,
+				"Token": Token
+			},
+			success: function(data) {
+				if(data.Status == 1) {
+					layer.open({
+						content: data.Result,
+						title: '温馨提示',
+						area: ['320px', '180px'],
+						success: function(layer) {
+							layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+						},
+					});
+				} else {
+					layer.open({
+						content: data.Result,
+						title: '温馨提示',
+						area: ['320px', '180px'],
+						success: function(layer) {
+							layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+						},
+					});
+				}
 			}
-		}
-	});
+		});
+	}
 })
 
 /*
@@ -236,46 +259,57 @@ $("#middle-comfirm").click(function() {
 	var Longitude = 0;
 	var Latitude = 0;
 	var Token = getCookie("token");
-
-	$.ajax({
-		type: "post",
-		url: urlf + "api/User/PCIntermediaryCertification",
-		async: true,
-		data: {
-			"CompanyName": Name,
-			"Province": Province,
-			"City": City,
-			"Region": Area,
-			"CompanyAddress": Address,
-			"CompanyRegistration": Number,
-			"CompanyIntroduce": Intro,
-			"Longitude": 0,
-			"Latitude": 0,
-			"QQNumber": QQnumber,
-			"Token": Token
-		},
-		success: function(data) {
-			if(data.Status == 1) {
-				layer.open({
-					content: data.Result,
-					title: '温馨提示',
-					area: ['320px', '180px'],
-					success: function(layer) {
-						layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
-					},
-				});
-			} else {
-				layer.open({
-					content: data.Result,
-					title: '温馨提示',
-					area: ['320px', '180px'],
-					success: function(layer) {
-						layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
-					},
-				});
+	if(Name == '' || Number == '' || QQnumber == '' || Address == '' || Intro == ''){
+		layer.open({
+			content: "请确定是否输入完整?",
+			title: '温馨提示',
+			area: ['320px', '180px'],
+			success: function(layer) {
+				layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+			},
+		});
+	}
+	else{
+		$.ajax({
+			type: "post",
+			url: urlf + "api/User/PCIntermediaryCertification",
+			async: true,
+			data: {
+				"CompanyName": Name,
+				"Province": Province,
+				"City": City,
+				"Region": Area,
+				"CompanyAddress": Address,
+				"CompanyRegistration": Number,
+				"CompanyIntroduce": Intro,
+				"Longitude": 0,
+				"Latitude": 0,
+				"QQNumber": QQnumber,
+				"Token": Token
+			},
+			success: function(data) {
+				if(data.Status == 1) {
+					layer.open({
+						content: data.Result,
+						title: '温馨提示',
+						area: ['320px', '180px'],
+						success: function(layer) {
+							layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+						},
+					});
+				} else {
+					layer.open({
+						content: data.Result,
+						title: '温馨提示',
+						area: ['320px', '180px'],
+						success: function(layer) {
+							layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+						},
+					});
+				}
 			}
-		}
-	});
+		});
+	}
 })
 
 /*
@@ -323,10 +357,6 @@ function getMyAuthentication() {
 	});
 }
 
-var thisPro = '';
-var thisCity = '';
-var thisRegi = '';
-
 $('#resume-quali').attr("disabled", "disabled");
 $(".radio").attr("disabled", true); //这里
 $('#resume-expe').attr("disabled", "disabled");
@@ -353,6 +383,7 @@ function GetResumeInfor() {
 			"Token": token
 		},
 		error: function() {
+		
 			layer.open({
 				content: "您未登录，请先登录。",
 				title: '温馨提示',
@@ -380,23 +411,23 @@ function GetResumeInfor() {
 				//显示学历
 				ShowSelectedInfor("resume-quali", re.Qualifications);
 
-				//显示期望职位
-				//			console.log(re.PositionName)
-				//			ShowSelectPosi("resume-job1", "resume-job2", re.PositionClassName, re.PositionName)
-
-				thisPro = re.Province;
-				thisCity = re.City;
-				thisRegi = re.Region;
-
+				//显示省市区
+				$("#distpicker-resume-infor").distpicker({
+	    			province: re.Province,
+	    			city: re.City,
+	   		 		district: re.Region
+	  			});
+	  			$("#resumecmbProvince").attr("disabled",true);
+	  			$("#resumecmbCity").attr("disabled",true);
+	  			$("#resumecmbArea").attr("disabled",true);
+	  			
+	  			
 				name += '<input type="text" class="input-text01" id="resume-name" value="' + re.Name + '" readonly="readonly"/>';
 				address += '<input type="text" class="input-text01" id="resume-address"value="' + re.Address + '"readonly="readonly"/>';
 				qq += '<input type="text" class="input-text01" id="res-QQ" value="' + re.QQNumber + '"readonly="readonly"/>';
 				phone += '<input type="text" class="input-text01" id="resume-phone"value="' + re.phone + '"readonly="readonly"/>';
 				salary += '<input type="text" class="input-text01" id="salary-expire"value="' + re.SalaryExpectation + '" readonly="readonly"/>';
 				intro += '<textarea class="input-textarea01" id="resume-selfIntro" readonly="readonly">' + re.Introduction + '</textarea>';
-				pro += '<input type="text" class="input-text02" id="resumeProvince" value="' + re.Province + '"readonly="readonly"/>'
-				pro += '<input type="text" class="input-text02" id="resumeCity" value="' + re.City + '"readonly="readonly"/>'
-				pro += '<input type="text" class="input-text02" id="resumeArea" value="' + re.Region + '"readonly="readonly"/>'
 				pos += '<input type="text" class="input-text02" id="resPosCName" value="' + re.PositionClassName + '"readonly="readonly"/>'
 				pos += '<input type="text" class="input-text02" id="resPosName" value="' + re.PositionName + '"readonly="readonly"/>'
 
@@ -406,9 +437,9 @@ function GetResumeInfor() {
 				$("#resPhone").html(phone);
 				$("#resSalary").html(salary);
 				$("#resIntro").html(intro);
-				$("#showPCR").html(pro);
 				$("#resPostion").html(pos);
 			} else {
+					
 				layer.open({
 					content: data.Result,
 					title: '温馨提示',
@@ -428,13 +459,6 @@ function GetResumeInfor() {
  */
 $("#resume-button").click(function() {
 
-	var pp = thisPro;
-	var cc = thisCity;
-	var rr = thisRegi;
-	//	console.log(pp)
-	//	console.log(cc)
-	//	console.log(rr)
-
 	$(this).css("background-color", "#FF6146");
 	$(this).hide();
 	$("#SaveResume").show();
@@ -444,17 +468,14 @@ $("#resume-button").click(function() {
 	$('textarea').attr("readonly", false);
 	$('#resume-quali').attr("disabled", false);
 	$(".radio").attr("disabled", false); //这里
-	$('#resumecmbProvince').attr("disabled", false);
-	$('#resumecmbCity').attr("disabled", false);
-	$('#resumecmbArea').attr("disabled", false);
 	$('#resume-job1').attr("disabled", false);
 	$('#resume-job2').attr("disabled", false);
 	$('#resume-expe').attr("disabled", false);
-
-	$("#showPCR").replaceWith('<li id="showPCR"><select id="resumecmbProvince" name="cmbProvince" class="select-frame02"><select><select id="resumecmbCity" name="cmbCity" class="select-frame02"><select>  <select id="resumecmbArea" name="cmbArea" class="select-frame02"><select></li>');
-	addressInit('resumecmbProvince', 'resumecmbCity', 'resumecmbArea');
-	ShowPAR('resumecmbProvince', 'resumecmbCity', 'resumecmbArea', pp, cc, rr);
-
+	
+	$("#resumecmbProvince").attr("disabled",false);
+	$("#resumecmbCity").attr("disabled",false);
+	$("#resumecmbArea").attr("disabled",false);
+	
 	$("#resPostion").replaceWith('');
 	$("#resPostion0").show();
 	$("#resPostion1").show();
@@ -506,7 +527,6 @@ $("#SaveResume").click(function() {
 			"Token": Token
 		},
 		success: function(data) {
-			//			console.log(data.Result);
 			if(data.Status == 1) {
 				layer.open({
 					content: data.Result,
@@ -575,7 +595,11 @@ function getCompanyInfor() {
 			var re = data.Result;
 			if(data.Status == 1) {
 				//显示省市区
-				ShowPAR('companycmbProvince', 'companycmbCity', 'companycmbArea', re.Province, re.City, re.Region);
+				$("#distpicker-company-infor").distpicker({
+	    			province: re.Province,
+	    			city: re.City,
+	   		 		district: re.Region
+	  			});
 
 				name += '<input type="text" class="input-text01" id="company-name" value="' + re.CompanyName + '"/>'
 				size += '<input type="text" class="input-text01" id="company-size" value="' + re.CompanyScale + '"/>'
@@ -594,6 +618,11 @@ function getCompanyInfor() {
 				$("#enterprise-intro").html(intro);
 
 			} else {
+				$("#distpicker-company-infor").distpicker({
+	    			province: "",
+	    			city: "",
+	   		 		district: ""
+	  			});
 				layer.open({
 					content: data.Result,
 					title: '温馨提示',
@@ -637,11 +666,13 @@ function getMiddleInfor() {
 		},
 		success: function(data) {
 			var re = data.Result;
-			//			console.log(data.Result);
-
 			if(data.Status == 1) {
 				//显示省市区
-				ShowPAR('middlecmbProvince', 'middlecmbCity', 'middlecmbArea', re.Province, re.City, re.Region);
+				$("#distpicker-middle-infor").distpicker({
+	    			province: re.Province,
+	    			city: re.City,
+	   		 		district: re.Region
+	  			});
 
 				name += '<input type="text" class="input-text01" id="middle-name" value="' + re.CompanyName + '"/>';
 				num += '<input type="text" class="input-text01" id="middle-number" value="' + re.CompanyRegistration + '"/>';
@@ -655,6 +686,11 @@ function getMiddleInfor() {
 				$("#mi-address").html(addr);
 				$("#mi-intro").html(intro);
 			} else {
+				$("#distpicker-middle-infor").distpicker({
+	    			province: "",
+	    			city: "",
+	   		 		district: ""
+	  			});
 				layer.open({
 					content: data.Result,
 					title: '温馨提示',
@@ -688,8 +724,7 @@ $('#menu-identify-information').click(function() {
 	$('.information-right1').hide();
 	$(".information-right2").hide();
 	$('#identify-information').show();
-	
-		getMyAuthentication();
+	getMyAuthentication();
 	
 })
 $('#menu-resume-information').click(function() {
@@ -710,10 +745,7 @@ $('#menu-company-information').click(function() {
 	$('.information-right1').hide();
 	$(".information-right2").hide();
 	$('#company-information').show();
-	addressInit('companycmbProvince', 'companycmbCity', 'companycmbArea');
-	
-		getCompanyInfor();
-	
+	getCompanyInfor();
 })
 $('#menu-middle-information').click(function() {
 	$(".h4").css("color", "#4A4A4A");
@@ -723,10 +755,7 @@ $('#menu-middle-information').click(function() {
 	$('.information-right1').hide();
 	$(".information-right2").hide();
 	$('#middle-information').show();
-	addressInit('middlecmbProvince', 'middlecmbCity', 'middlecmbArea');
-	
-		getMiddleInfor();
-	
+	getMiddleInfor();
 })
 $('#menu-resume-infor').click(function() {
 	$(".h4").css("color", "#4A4A4A");
@@ -747,7 +776,6 @@ $('#menu-provide-infor').click(function() {
 	$(".information-right2").hide();
 	$('#provide-infor').show();
 	getProvideList();
-	//	addressInit('providecmbProvince', 'providecmbCity', 'providecmbArea');
 })
 $('#menu-bus-infor').click(function() {
 	$(".h4").css("color", "#4A4A4A");
@@ -767,6 +795,5 @@ $('#menu-rent-infor').click(function() {
 	$('.information-right1').hide();
 	$(".information-right2").hide();
 	$('#rent-infor').show();
-	//	addressInit('rentcmbProvince', 'rentcmbCity', 'rentcmbArea');
 	getRentList();
 })
