@@ -6,6 +6,7 @@
     <title>全球英才</title>
     <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="css/top.css"/>
+    <link rel="stylesheet" href="css/swiper.min.css" />
 	<link rel="stylesheet" href="css/detail-parttimejob.css" type="text/css" />
 	<link rel="stylesheet" href="css/kuCity.css"/>
 </head>
@@ -92,43 +93,44 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="container" id="work-kind"> 
+		<div class="row col-md-12 work-text01 " style="width: 400px;height: 280px;">
+			<!-- Swiper -->
+			<div class="swiper-container">
+		        <div class="swiper-wrapper" id="partJob-Banner">
+		            <!--<div class="swiper-slide"><img src="assets/QQ截图20170713111556.png" /></div>
+		            <div class="swiper-slide"><img src="assets/QQ截图20170713111556.png" /></div>
+		            <div class="swiper-slide"><img src="assets/QQ截图20170713111556.png" /></div>
+		            <div class="swiper-slide"><img src="assets/QQ截图20170713111556.png" /></div>-->
+		        </div>
+		        <!-- Add Pagination -->
+		        <div class="swiper-pagination"></div>
+		        <!-- Add Arrows -->
+		        <!--<div class="swiper-button-next"></div>
+		        <div class="swiper-button-prev"></div>-->
+		    </div>
 
-
-	<div class="container"> 
-		<div class="row">
-			<div class="col-md-12" id="work-kind">
-				<div class="work-text01" id="workImg">
-					<!--<div>
-						<img src="assets/QQ截图20170715170745.jpg" />
-					</div>
-					<div>
-						<img src="assets/QQ截图20170715170745.jpg"/>
-					</div>
-					<div>
-						<img src="assets/QQ截图20170715170745.jpg"/>
-					</div>
-					<div class="img1">
-						<img src="assets/QQ截图20170715170745.jpg"/>
-					</div>
-					<div class="img2">
-						<img src="assets/QQ截图20170715170745.jpg"/>
-					</div>-->
-				</div>
-				
-				<div class="work-text02" id="Work">
-					<div class="work-line01">
-						<!--<span class="work-text09">All roads needs feet.</span>-->
-					</div>
-					<div class="work-line01">
-						<!--<img src="assets/坐标.png" />-->
-						<!--<span class="work-text05">64&nbsp;&nbsp;Conroy Mission</span>-->
-					</div>
-					<div class="work-line02">
-						<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" data-content="And here">电话联系</button>&nbsp;&nbsp;&nbsp;&nbsp;
-						<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1352197441&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1352197441:51" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
-					</div>
-				</div>
+		</div>
+		
+		<div class="work-text111" id="Work">
+			<!--<div class="work-line01 workname">
+				<span class="work-text09">All roads needs feet.</span>
 			</div>
+			<div class="work-line01">
+				<img src="assets/坐标.png" class="img"/>
+				<span class="work-text05">64&nbsp;&nbsp;Conroy Mission</span>
+				<img src="img/jiaji.png" class="img"/>
+				<span class="work-text005">加急</span>
+			</div>
+			<div class="work-line01 jiaji">
+				<img src="img/daojishi.png" class="imgggg"/>
+				<span class="CountDown">距结束00：00：40</span>
+			</div>
+			<div class="work-line02">
+				<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" data-content="And here">电话联系</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1352197441&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1352197441:51" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+			</div>-->
 		</div>
 	</div>
 	
@@ -155,9 +157,7 @@
 	
 	<include src="bottom.html"></include>
 </body>
-	<!--<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>-->
 	<script src="js/jquery-1.11.1.js"></script>
-	<script type="text/javascript" src="layer/layer.js" ></script>
 	<script type="text/javascript" src="layer/layer.js" ></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/include.js"></script>
@@ -189,5 +189,6 @@
 			setCookie("city",this.cityci);
 		}	
     </script>
+   	<script src="js/index/swiper.min.js"></script>
 	<script src="js/detail-infor/detail-parttimejob.js"></script>
 </html>

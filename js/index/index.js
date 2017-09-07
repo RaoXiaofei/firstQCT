@@ -33,23 +33,45 @@ window.onload = function() {
 				//			console.log(data.Result.Banner);			
 				for(var i = 0; i < data.Result.Banner.length; i++) {
 					var a = data.Result.Banner[i];
-					//				if(a.IsJump == false){
-					//					li +='<div class="swiper-slide" ><img src="'+a.Image+'" style="width: 100%;height:100%"/></div>';
-					//				}else{
-					li += '<div class="swiper-slide" ><a herf="' + a.Url + '"><img src="' + a.Image + '" style="width: 100%;height:100%"/></a></div>';
-					//				}
+					if(a.IsJump == false){
+						li +='<div class="swiper-slide" ><img src="'+a.Image+'" style="width: 100%;height:100%"/></div>';
+					}else{
+						li += '<div class="swiper-slide" ><a herf="' + a.Url + '"><img src="' + a.Image + '" style="width: 100%;height:100%"/></a></div>';
+					}
 				}
 				$('#banner1').html(li);
-
-				//			console.log(data.Result);
+				
+				var swiper = new Swiper('.swiper-container', {
+					pagination: '.swiper-pagination',
+					nextButton: '.swiper-button-next',
+					prevButton: '.swiper-button-prev',
+					slidesPerView: 1,
+					paginationClickable: true,
+					spaceBetween: 30,
+					loop: true,
+					autoplay: 3000
+				});
+				
+//							console.log(data.Result);
 				//猜你喜欢
 				for(var i = 0; i < data.Result.List.length; i++) {
 					var b = data.Result.List[i];
-					infor += '<p class="index-guesstext" id="' + b.ID + '" onclick="ShowIndexDe(this)">'
-					infor += '<span class="index-text04">' + b.Name + '</span>'
-					infor += '<span class="index-text05">' + b.CompanyName + '</span>'
-					infor += '<span class="index-text07">' + b.Salary + '</span>'
-					infor += '</p>';
+					if(b.IsUrgent == false){
+						infor += '<p class="index-guesstext" id="' + b.ID + '" onclick="ShowIndexDe(this)">'
+						infor += '<span class="index-text04">' + b.Name + '</span>'
+						infor += '<span class="index-text05">' + b.CompanyName + '</span>'
+						infor += '<span class="index-text07">' + b.Salary + '</span>'
+						infor += '</p>';
+					}
+					else{
+						infor += '<p class="index-guesstext" id="' + b.ID + '" onclick="ShowIndexDe(this)">'
+						infor += '<span class="index-text04">' + b.Name + '<span class="index-text06" id="faster">[<img src="img/urgent.png" />加急]</span></span>'
+						infor += '<span class="index-text05">' + b.CompanyName + '</span>'
+						infor += '<span class="index-text07">' + b.Salary + '</span>'
+						infor += '</p>';
+					}
+					
+					
 				}
 				$('#Guess-Infor').html(infor);
 				this.isNext = data.Result.IsNext
@@ -115,3 +137,29 @@ function ShowIndexDe(listID) {
 $('.top').click(function() {
 	window.open('issue.html');
 })
+
+function Issue(){
+	location.href = "issue.html";
+}
+
+/*
+ * 首页搜素跳转全部工作界面
+ */
+function SearchAllposition(e){
+	var keyw = $("#index-keywords").val();
+	if(keyw == ""){
+		alert("请输入关键字搜索！")
+//		layer.open({
+//			content: "请输入关键字搜索",
+//			title: '温馨提示',
+//			area: ['320px', '180px'],
+//			success: function(layer) {
+//				layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+//			},
+//		});
+	}
+	else{
+		setCookie("indexKey", keyw);
+		location.href = "list-work.html#allwork-infor";
+	}
+}

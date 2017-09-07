@@ -1,5 +1,5 @@
 var pageIndex4 = 1;
-var Qualifications = "全部";
+var qualifi = "";
 var allR = '';
 /*
  * 获取所有简历
@@ -15,6 +15,7 @@ $("#nav02").attr("href","#resume-infor").click(function(){
 	this.pageSize = 20;
 	this.place = "全部";
 	this.pos = "全部";
+	this.qualifi = "全部";
 	this.salaryType = 0;
 	this.allR = '';
 	GetAllResume();
@@ -28,7 +29,7 @@ function GetAllResume(){
 		url:urlf+"api/Company/Resume",
 		async:true,
 		data:{
-			"Qualifications": this.Qualifications,
+			"Qualifications": this.qualifi,
 		  	"Place": this.place,
 		  	"Occupation": this.pos,
 		 	"SalaryType": this.salaryType,
@@ -69,7 +70,7 @@ function GetMore3(){
 				url:urlf+"api/Company/Resume",
 				async:true,
 				data:{
-					"Qualifications": this.Qualifications,
+					"Qualifications": this.qualifi,
 				  	"Place": this.place,
 				  	"Occupation": this.pos,
 				 	"SalaryType": this.salaryType,
@@ -84,10 +85,10 @@ function GetMore3(){
 		
 						for(var i in data.Result.List){
 							allR += '<p class="index-guesstext" id="'+re[i].ID+'" onclick="ShowResumeDe(this)">'
-							allR +=		'<span class="index-text04">'+re[i].Name+'</span>'
-							allR +=		'<span class="index-text05">'+re[i].PositionName+'</span>'
-							allR +=		'<span class="index-text06">'+re[i].Qualifications+'</span>'
-							allR +=		'<span class="index-text07">'+re[i].SalaryExpectation+'</span>'
+							allR +=		'<span class="index-text20">'+re[i].Name+'</span>'
+							allR +=		'<span class="index-text21">'+re[i].PositionName+'</span>'
+							allR +=		'<span class="index-text22">'+re[i].Qualifications+'</span>'
+							allR +=		'<span class="index-text23">'+re[i].SalaryExpectation+'</span>'
 							allR +=	'</p>'
 						}
 						
@@ -121,13 +122,26 @@ function GetAllWork(){
 
 				for(var i in data.Result){
 					for(var j in data.Result[i].PositionList){
-						allWork +=	'<li class="list-work01" id="'+data.Result[i].PositionList[j].ID+'"onclick="ChoosePosiR(this)"><span class="list-text03">'+data.Result[i].PositionList[j].Name+'</span></li>'
+						allWork +=	'<li class="list-work01 list-text03 resume_position" id="'+data.Result[i].PositionList[j].ID+'">'+data.Result[i].PositionList[j].Name+'</li>'
 					}
 				}
 				$("#list-job03").html(allWork);
 			}
+			$(".resume_position").eq(0).css("color","#000000");
+			$(".resume_position").each(function(){
+				$(this).click(function(){
+					$(".resume_position").css("color","#3DA8F5");
+					$(this).css("color","#000000");
+					pos1 = this.innerText;
+					pos = pos1;
+					pageIndex4 = 1;
+					pageSize = 1000;
+					GetAllResume1();
+				})
+			})
 		}
 	});
+
 }
 /*
  * 全部工作根据市获取区
@@ -144,10 +158,23 @@ function GetRegion(){
 //			console.log(data.Result);
 			if(data.Status == 1){		
 				for(var i in data.Result){
-					cityty1 += '<li class="list-work01" onclick="ChooseRegionR(this)"><span class="list-text03">'+data.Result[i].RegionName+'</span></li>' 				
+					cityty1 += '<li class="list-work01 list-text03 resume_place">'+data.Result[i].RegionName+'</li>' 				
 				}		
 				$("#list-city03").html(cityty1);
 			}
+			$(".resume_place").eq(0).css("color","#000000");
+			$(".resume_place").each(function(){
+				$(this).click(function(){
+					$(".resume_place").css("color","#3DA8F5");
+					$(this).css("color","#000000");
+						place1 = this.innerText;
+						place = place1;
+						pageIndex4 = 1;
+						pageSize = 1000;
+						GetAllResume1();
+
+				})
+			})
 		}
 	});
 }
@@ -159,7 +186,7 @@ function GetAllResume1(){
 		url:urlf+"api/Company/Resume",
 		async:true,
 		data:{
-			"Qualifications": this.Qualifications,
+			"Qualifications": this.qualifi,
 		  	"Place": this.place,
 		  	"Occupation": this.pos,
 		 	"SalaryType": this.salaryType,
@@ -174,10 +201,10 @@ function GetAllResume1(){
 
 				for(var i in data.Result.List){
 					all += '<p class="index-guesstext" id="'+re[i].ID+'" onclick="ShowResumeDe(this)">'
-					all +=		'<span class="index-text04">'+re[i].Name+'</span>'
-					all +=		'<span class="index-text05">'+re[i].PositionName+'</span>'
-					all +=		'<span class="index-text06">'+re[i].Qualifications+'</span>'
-					all +=		'<span class="index-text07">'+re[i].SalaryExpectation+'</span>'
+					all +=		'<span class="index-text20">'+re[i].Name+'</span>'
+					all +=		'<span class="index-text21">'+re[i].PositionName+'</span>'
+					all +=		'<span class="index-text22">'+re[i].Qualifications+'</span>'
+					all +=		'<span class="index-text23">'+re[i].SalaryExpectation+'</span>'
 					all +=	'</p>'
 				}
 				
@@ -189,41 +216,35 @@ function GetAllResume1(){
 		}.bind(this)
 	});
 }
+
+
 /*
  * 根据条件筛选全部简历
  */
-function ChooseQualiR(e){
-	quali = e.innerText;
-//	console.log(quali)
-	this.Qualifications = quali;
-	this.pageIndex4 = 1;
-	this.pageSize = 1000;
-	GetAllResume1();
-}
-function ChoosePosiR(e){
-	pos1 = e.innerText;
-	this.pos = pos1
-//	console.log(this.pos)
-	this.pageIndex4 = 1;
-	this.pageSize = 1000;
-	GetAllResume1();
-}
-function ChooseRegionR(e){
-	place1 = e.innerText;
-	this.place = place1;
-//	console.log(this.region);
-	this.pageIndex4 = 1;
-	this.pageSize = 1000;
-	GetAllResume1();
-}
-function ChooseSalaryR(e){
-	type1 = e.id;
-	this.salaryType = type1;
-//	console.log(this.salaryType);
-	this.pageIndex4 = 1;
-	this.pageSize = 1000;
-	GetAllResume1();
-}
+$(".resume_salary").eq(0).css("color","#000000")
+$(".resume_salary").each(function(){
+	$(this).click(function(){
+		$(".resume_salary").css("color","#3DA8F5");
+		$(this).css("color","#000000");
+		var type1 = $(this).attr("id");
+		salaryType = type1;
+		pageIndex4 = 1;
+		pageSize = 1000;
+		GetAllResume1();
+	})
+})
+$(".resume_quali").eq(0).css("color","#000000");
+$(".resume_quali").each(function(){
+	$(this).click(function(){
+		$(".resume_quali").css("color","#3DA8F5");
+		$(this).css("color","#000000");
+		var qualifi1 = this.innerText;
+		qualifi = qualifi1;
+		pageIndex4 = 1;
+		pageSize = 1000;
+		GetAllResume1();
+	})
+})
 
 /*
  * 显示简历信息详情

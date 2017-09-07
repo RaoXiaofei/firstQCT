@@ -25,6 +25,11 @@
 	font-size: 36px;
 	color: #4A4A4A;
 }
+.work-text111{
+	font-family:"微软雅黑";
+	font-size: 36px;
+	color: #4A4A4A;
+}
 .work-text03{
 	font-family:"微软雅黑";
 	font-weight: bold;
@@ -39,10 +44,11 @@
 }
 .work-text05{
 	display: inline-block;
-	margin-left:20px ;
+	margin-left:10px ;
 	font-family:"微软雅黑";
 	font-size: 20px;
-	color: #4A4A4A;	
+	color: #4A4A4A;
+	margin-right: 40px;	
 }
 .work-text06{
 	font-family:"微软雅黑";
@@ -85,7 +91,7 @@
 }
 .work-line{
 	display: block;
-	height: 50px;
+	height: 35px;
 }
 .div-worksection{
 	margin-top: 40px;
@@ -94,4 +100,40 @@
     color: #fff;
     background-color: #FF6146;
     border-color: #FF6146;
+}
+.CountDown{
+	display: inline-block;
+    background-color: #f0f0f0;
+    border-radius: 40px;
+    height: 40px;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #9B9B9B;
+    padding-top: 8px;
+    width: 236px;
+    padding-left: 50px;
+    margin-left: 5px;
+}
+
+.imgggg{
+	position: absolute;
+    left: 0px;
+    top: -5px;
+}
+.work-text005{
+	display: inline-block;
+	font-family:"微软雅黑";
+	font-size: 20px;
+	color: #4A4A4A;	
+}
+.img{
+	margin-top: -10px;
+}
+.jiaji{
+	position: relative;
+	margin-bottom: 18px;
+}
+.workname{
+	margin-bottom: 23px;
 }

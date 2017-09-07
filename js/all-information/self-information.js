@@ -66,20 +66,15 @@ $(document).ready(function() {
 	$.ajax({
 		url: urlf + "api/Sys/GetPositionListToRe",
 		success: function(data) {
-			//			console.log(data.Result);
 			if(data.Status == 1) {
 				for(var i = 0; i < data.Result.length; i++) {
 					var re = data.Result;
 					//职位类名
 					position += '<option><span class="issuetop-text03">' + re[i].ClassName + '</span></option>';
-					////					//职位名称
-					//					for(var j = 0; j < data.Result[i].PositionList.length; j++){
-					//						deposition += '<option value="'+ data.Result[i].PositionList[j].ID+'">'+data.Result[i].PositionList[j].Name+'</option>';
-					//					}
 				}
 
 				$(".recruit-select01").html(position);
-				$(".recruit-select02").html(deposition);
+//				$(".recruit-select02").html(deposition);
 			} else {
 				alert(data.Status);
 			}
@@ -97,17 +92,14 @@ function Jobs(e) {
 		url: urlf + "api/Sys/GetPositionListToRe",
 		success: function(data) {
 			if(data.Status == 1) {
-				//				console.log(data.Result);
 				var abc = data.Result;
 				for(var i = 0; i < abc.length; i++) {
 					if(abc[i].ClassName == e) {
-						//						console.log(abc[i].PositionList);
 						for(var j = 0; j < abc[i].PositionList.length; j++) {
 							deposition1 += '<option value="' + abc[i].PositionList[j].ID + '">' + abc[i].PositionList[j].Name + '</option>';
 						}
 					}
 				}
-				//				console.log(deposition1)
 				$(".recruit-select02").html(deposition1);
 			} else {
 				alert(data.Result)
@@ -338,11 +330,14 @@ function getMyAuthentication() {
 		success: function(data) {
 			//			console.log(data.Result);
 			if(data.Status == 1) {
-				name += '<input type="text" class="input-text01" id="self-name" value="' + data.Result.Name + '"/>'
-				selfID += '<input type="text" class="input-text01" id="self-number" value="' + data.Result.IDCard + '"/>'
+				name += '<input type="text" class="input-text01" id="self-name" value="' + data.Result.Name + '" readonly = "readonly"/>'
+				selfID += '<input type="text" class="input-text01" id="self-number" value="' + data.Result.IDCard + '" readonly = "readonly"/>'
 
 				$("#IdentName").html(name);
 				$("#selfID").html(selfID);
+				
+				$("#cerfication-button").hide();
+				
 			} else {
 				layer.open({
 					content: data.Result,
@@ -383,7 +378,6 @@ function GetResumeInfor() {
 			"Token": token
 		},
 		error: function() {
-		
 			layer.open({
 				content: "您未登录，请先登录。",
 				title: '温馨提示',
@@ -394,7 +388,7 @@ function GetResumeInfor() {
 			});
 		},
 		success: function(data) {
-			//	console.log(data.Result);
+//				console.log(data.Result);
 			re = data.Result;
 
 			if(data.Status == 1) {
@@ -421,23 +415,18 @@ function GetResumeInfor() {
 	  			$("#resumecmbCity").attr("disabled",true);
 	  			$("#resumecmbArea").attr("disabled",true);
 	  			
+	  			$("#resume-name").val(re.Name);
+	  			$("#resume-address").val(re.Address);
+	  			$("#res-QQ").val(re.QQNumber);
+	  			$("#resume-phone").val(re.phone);
+	  			$("#salary-expire").val(re.SalaryExpectation);
+	  			$("#resume-selfIntro").val(re.Introduction);
+	  			$("#resPosCName").val(re.PositionClassName);
+	  			$("#resPosName").val(re.PositionName);
 	  			
-				name += '<input type="text" class="input-text01" id="resume-name" value="' + re.Name + '" readonly="readonly"/>';
-				address += '<input type="text" class="input-text01" id="resume-address"value="' + re.Address + '"readonly="readonly"/>';
-				qq += '<input type="text" class="input-text01" id="res-QQ" value="' + re.QQNumber + '"readonly="readonly"/>';
-				phone += '<input type="text" class="input-text01" id="resume-phone"value="' + re.phone + '"readonly="readonly"/>';
-				salary += '<input type="text" class="input-text01" id="salary-expire"value="' + re.SalaryExpectation + '" readonly="readonly"/>';
-				intro += '<textarea class="input-textarea01" id="resume-selfIntro" readonly="readonly">' + re.Introduction + '</textarea>';
-				pos += '<input type="text" class="input-text02" id="resPosCName" value="' + re.PositionClassName + '"readonly="readonly"/>'
-				pos += '<input type="text" class="input-text02" id="resPosName" value="' + re.PositionName + '"readonly="readonly"/>'
-
-				$("#resName").html(name);
-				$("#resAddress").html(address);
-				$("#resQQ").html(qq);
-				$("#resPhone").html(phone);
-				$("#resSalary").html(salary);
-				$("#resIntro").html(intro);
-				$("#resPostion").html(pos);
+	  			$('input').attr("readonly",true);
+	  			$('textarea').attr("readonly",true);
+	  			
 			} else {
 					
 				layer.open({
@@ -479,8 +468,8 @@ $("#resume-button").click(function() {
 	$("#resPostion").replaceWith('');
 	$("#resPostion0").show();
 	$("#resPostion1").show();
-	Jobs('销售');
-	ShowSelectPosi("resume-job1", "resume-job2", re.PositionClassName, re.PositionName);
+//	Jobs('销售');
+	ShowSelectPosi("resume-job1", "resume-job2", re.PositionClassName, re.PositionID);
 })
 
 /*
@@ -546,6 +535,7 @@ $("#SaveResume").click(function() {
 				$('#resume-job1').attr("disabled", "disabled");
 				$('#resume-job2').attr("disabled", "disabled");
 				$('#resume-expe').attr("disabled", "disabled");
+				window.location.reload();
 			} else {
 				layer.open({
 					content: data.Result,
@@ -600,22 +590,22 @@ function getCompanyInfor() {
 	    			city: re.City,
 	   		 		district: re.Region
 	  			});
+	  			
+	  			$("#company-name").val(re.CompanyName);
+	  			$("#company-size").val(re.CompanyScale);
+	  			$("#company-nature").val(re.CompanyNature);
+	  			$("#company-trade").val(re.CompanyIndustry);
+	  			$("#companyQQ").val(re.QQNumber);
+	  			$("#company-address").val(re.CompanyAddress);
+	  			$("#company-intro").val(re.CompanyIntroduce);
 
-				name += '<input type="text" class="input-text01" id="company-name" value="' + re.CompanyName + '"/>'
-				size += '<input type="text" class="input-text01" id="company-size" value="' + re.CompanyScale + '"/>'
-				nature += '<input type="text" class="input-text01" id="company-nature" value="' + re.CompanyNature + '"/>'
-				trade += '<input type="text" class="input-text01" id="company-trade" value="' + re.CompanyIndustry + '"/>'
-				qq += '<input type="text" class="input-text01" id="companyQQ" value="' + re.QQNumber + '"/>'
-				address += '<input type="text" class="input-text01" id="company-address" value="' + re.CompanyAddress + '"/>'
-				intro += '<textarea class="input-textarea01" id="company-intro">' + re.CompanyIntroduce + '</textarea>'
-
-				$("#enterprise-name").html(name);
-				$("#enterprise-size").html(size);
-				$("#enterprise-nature").html(nature);
-				$("#enterprise-trade").html(trade);
-				$("#enterprise-QQ").html(qq);
-				$("#enterprise-address").html(address);
-				$("#enterprise-intro").html(intro);
+				$('input').attr("readonly", true);
+				$('textarea').attr("readonly", true);
+				$("#companycmbProvince").attr("disabled",true);
+				$("#companycmbCity").attr("disabled",true);
+				$("#companycmbArea").attr("disabled",true);
+				
+//				$("#company-comfirm").hide();
 
 			} else {
 				$("#distpicker-company-infor").distpicker({
@@ -673,18 +663,19 @@ function getMiddleInfor() {
 	    			city: re.City,
 	   		 		district: re.Region
 	  			});
-
-				name += '<input type="text" class="input-text01" id="middle-name" value="' + re.CompanyName + '"/>';
-				num += '<input type="text" class="input-text01" id="middle-number" value="' + re.CompanyRegistration + '"/>';
-				qq += '<input type="text" class="input-text01" id="middleQQ" value="' + re.QQNumber + '"/>';
-				addr += '<input type="text" class="input-text01" id="middle-address" value="' + re.CompanyAddress + '"/>';
-				intro += '<textarea class="input-textarea01" id="middle-intro">' + re.CompanyIntroduce + '</textarea>'
-
-				$("#mi-name").html(name);
-				$("#mi-number").html(num);
-				$("#mi-QQ").html(qq);
-				$("#mi-address").html(addr);
-				$("#mi-intro").html(intro);
+	  			
+	  			$("#middle-name").val(re.CompanyName);
+	  			$("#middle-number").val(re.CompanyRegistration);
+	  			$("#middleQQ").val(re.QQNumber);
+	  			$("#middle-address").val(re.CompanyAddress);
+	  			$("#middle-intro").val(re.CompanyIntroduce);
+	  			
+	  			$('input').attr("readonly",true);
+	  			$('textarea').attr("readonly",true);
+	  			$("#middlecmbProvince").attr("disabled", true);
+	  			$("#middlecmbCity").attr("disabled", true);
+	  			$("#middlecmbArea").attr("disabled", true);
+	  		
 			} else {
 				$("#distpicker-middle-infor").distpicker({
 	    			province: "",

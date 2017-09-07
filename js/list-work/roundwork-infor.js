@@ -40,11 +40,21 @@ function GetRoundWork(){
 			if(data.Status == 1){	
 //				console.log(data.Result)
 				for(var i in data.Result.List){
-					AllRoun += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
-					AllRoun += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
-					AllRoun += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
-					AllRoun += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
-					AllRoun += '</p>'
+					if(data.Result.List[i].IsUrgent == false){
+						AllRoun += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
+						AllRoun += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
+						AllRoun += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+						AllRoun += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
+						AllRoun += '</p>'
+					}
+					else{
+						AllRoun += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
+						AllRoun += '<span class="index-text04">'+data.Result.List[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+						AllRoun += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+						AllRoun += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
+						AllRoun += '</p>'
+					}
+					
 				}
 						
 				$("#allArou").html(AllRoun);
@@ -85,11 +95,20 @@ function GetMore2(){
 //					console.log(data.Result);
 					if(data.Status == 1){			
 						for(var i in data.Result.List){
-							AllRoun += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
-							AllRoun += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
-							AllRoun += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
-							AllRoun += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
-							AllRoun += '</p>'
+							if(data.Result.List[i].IsUrgent == false){
+								AllRoun += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
+								AllRoun += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
+								AllRoun += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+								AllRoun += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
+								AllRoun += '</p>'
+							}
+							else{
+								AllRoun += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
+								AllRoun += '<span class="index-text04">'+data.Result.List[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+								AllRoun += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+								AllRoun += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
+								AllRoun += '</p>'
+							}
 						}											
 						$("#allArou").html(AllRoun);
 						this.isNext = data.Result.IsNext;
@@ -123,11 +142,23 @@ function getAllPositionRound(){
 			if(data.Status == 1){
 				for(var i in data.Result){
 					for(var j in data.Result[i].PositionList){
-						allWork +=	'<li class="list-work01" id="'+data.Result[i].PositionList[j].ID+'"onclick="ChoosePosiA(this)"><span class="list-text03">'+data.Result[i].PositionList[j].Name+'</span></li>'
+						allWork +=	'<li class="list-work01 list-text03 roundwork_position" id="'+data.Result[i].PositionList[j].ID+'">'+data.Result[i].PositionList[j].Name+'</li>'
 					}
 				}
 				$("#list-job02").html(allWork);
 			}
+			$(".roundwork_position").eq(0).css("color","#000000");
+			$(".roundwork_position").each(function(){
+				$(this).click(function(){
+					$(".roundwork_position").css("color","#3DA8F5");
+					$(this).css("color","#000000");
+					pos1 = this.innerText;
+					pos = pos1;
+					pageIndexR = 1;
+					pageSize = 1000;
+					GetRoundWork1()
+				})
+			})
 		}
 	});
 }
@@ -146,10 +177,22 @@ function getRoundRegion(){
 //			console.log(data.Result);
 			if(data.Status == 1){		
 				for(var i in data.Result){
-					cityty += '<li class="list-work01" onclick="ChooseRegionA(this)"><span class="list-text03">'+data.Result[i].RegionName+'</span></li>' 				
+					cityty += '<li class="list-work01 list-text03 roundwork_region">'+data.Result[i].RegionName+'</li>' 				
 				}		
 				$("#list-city02").html(cityty);
 			}
+			$(".roundwork_region").eq(0).css("color", "#000000");
+			$(".roundwork_region").each(function(){
+				$(this).click(function(){
+					$(".roundwork_region").css("color", "#3DA8F5");
+					$(this).css("color","#000000")
+					place1 = this.innerText;
+					place = place1;
+					pageIndexR = 1;
+					pageSize = 1000;
+					GetRoundWork1();
+				})
+			})
 		}
 	});
 }
@@ -173,20 +216,26 @@ function GetRoundWork1(){
 		},
 		success:function(data){			
 			if(data.Status == 1){	
-//				console.log(data.Result)
-				for(var i in data.Result.List){
-					all += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
-					all += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
-					all += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
-					all += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
-					all += '</p>'
+				for(var i = 0; i < data.Result.List.length; i++){
+					if(data.Result.List[i].IsUrgent == false){
+						all += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
+						all += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
+						all += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+						all += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
+						all += '</p>'
+					}
+					else{
+						all += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
+						all += '<span class="index-text04">'+data.Result.List[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+						all += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+						all += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
+						all += '</p>'
+					}
 				}
 						
 				$("#allArou").html(all);
 				this.isNext = data.Result.IsNext
 				this.pageIndexR ++
-
-//				console.log(this.pageIndex)
 			}
 			else{
 				alert(data.Result);
@@ -197,30 +246,18 @@ function GetRoundWork1(){
 /*
  * 根据条件筛选周边工作
  */
-function ChoosePosiA(e){
-	pos1 = e.innerText;
-	this.pos = pos1
-//	console.log(this.pos)
-	this.pageIndexR = 1;
-	this.pageSize = 1000;
-	GetRoundWork1()
-}
-function ChooseRegionA(e){
-	place1 = e.innerText;
-	this.place = place1;
-//	console.log(this.region);
-	this.pageIndexR = 1;
-	this.pageSize = 1000;
-	GetRoundWork1()
-}
-function ChooseSalaryA(e){
-	type1 = e.id;
-	this.salaryType = type1;
-//	console.log(this.salaryType);
-	this.pageIndexR = 1;
-	this.pageSize = 1000;
-	GetRoundWork1()
-}
+$(".roundwork_salary").eq(0).css("color","#000000");
+$(".roundwork_salary").each(function(){
+	$(this).click(function(){
+		$(".roundwork_salary").css("color","#3DA8F5");
+		$(this).css("color", "#000000");
+		type1 = $(this).attr("id");
+		salaryType = type1;
+		pageIndexR = 1;
+		pageSize = 1000;
+		GetRoundWork1();
+	})
+})
 function KeySearch(){
 	var keyw = $("#keywords").val();
 	this.keyWord = keyw;

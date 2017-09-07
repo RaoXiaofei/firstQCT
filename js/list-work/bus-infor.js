@@ -15,22 +15,32 @@ $("#nav04").attr("href","#bus-infor").click(function(){
  * 获取全国大巴列表函数
  */
 function GetBusList(){
-	
+	this.pageSize = 20;
 	$.ajax({
 		type:"get",
-		url:urlf+"api/Company/Bus?pageIndex="+this.pageIndex2+"&pageSize="+this.pageSize,
+		url:urlf+"api/Company/Bus?pageIndex="+this.pageIndex2+"&pageSize="+this.pageSize+"&lng=0&lat=0",
 		async:true,
 		success:function(data){
 			if(data.Status == 1){
 				var re = data.Result.List;
 //				console.log(data.Result);
 				for(var i in re){
-					allB += '<p class="index-guesstext">'
-					allB +=		'<span class="index-text20">'+re[i].DriverName+'</span>'
-					allB +=		'<span class="index-text21">'+re[i].Address+'</span>'
-					allB +=		'<span class="index-text22">'+re[i].LicensePlate+'</span>'
-					allB +=		'<span class="index-text23">'+re[i].Phone+'</span>'	
-					allB +=	'</p>'			
+					if(re[i].IsUrgent == false){
+						allB += '<p class="index-guesstext">'
+						allB +=		'<span class="index-text20">'+re[i].DriverName+'</span>'
+						allB +=		'<span class="index-text21">'+re[i].Address+'</span>'
+						allB +=		'<span class="index-text22">'+re[i].LicensePlate+'</span>'
+						allB +=		'<span class="index-text23">'+re[i].Phone+'</span>'	
+						allB +=	'</p>'
+					}
+					else{
+						allB += '<p class="index-guesstext">'
+						allB +=		'<span class="index-text20">'+re[i].DriverName+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+						allB +=		'<span class="index-text21">'+re[i].Address+'</span>'
+						allB +=		'<span class="index-text22">'+re[i].LicensePlate+'</span>'
+						allB +=		'<span class="index-text23">'+re[i].Phone+'</span>'	
+						allB +=	'</p>'
+					}
 				}
 				$("#allBu").html(allB);
 				
@@ -56,12 +66,22 @@ function GetMore5(){
 						var re = data.Result.List;
 //						console.log(data.Result);
 						for(var i in re){
-							allB += '<p class="index-guesstext">'
-							allB +=		'<span class="index-text04">'+re[i].DriverName+'</span>'
-							allB +=		'<span class="index-text05">'+re[i].Address+'</span>'
-							allB +=		'<span class="index-text05">'+re[i].LicensePlate+'</span>'
-							allB +=		'<span class="index-text07">'+re[i].Phone+'</span>'	
-							allB +=	'</p>'			
+							if(re[i].IsUrgent == false){
+								allB += '<p class="index-guesstext">'
+								allB +=		'<span class="index-text20">'+re[i].DriverName+'</span>'
+								allB +=		'<span class="index-text21">'+re[i].Address+'</span>'
+								allB +=		'<span class="index-text22">'+re[i].LicensePlate+'</span>'
+								allB +=		'<span class="index-text23">'+re[i].Phone+'</span>'	
+								allB +=	'</p>'
+							}
+							else{
+								allB += '<p class="index-guesstext">'
+								allB +=		'<span class="index-text20">'+re[i].DriverName+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+								allB +=		'<span class="index-text21">'+re[i].Address+'</span>'
+								allB +=		'<span class="index-text22">'+re[i].LicensePlate+'</span>'
+								allB +=		'<span class="index-text23">'+re[i].Phone+'</span>'	
+								allB +=	'</p>'
+							}		
 						}
 						$("#allBu").html(allB);
 	

@@ -33,21 +33,34 @@ $.ajax({
 		detail +=	'<span class="work-text01">&nbsp;举报</span>'
 		detail +='</span>'
 		detail +='<br />'
-		detail +='<span class="work-line">'
+		detail +='<span class="work-line workname">'
 		detail +=	'<span class="work-text02">'+re.Name+'</span><span class="work-text03">'+re.Salary+'</span>'
 		detail +='</span>'
-		detail +='<br />'
-		detail +='<span class="work-line">'
-		for(var i in re.WelfareTag){
-			detail += '<span class="work-text04">'+re.WelfareTag[i].Name+'&nbsp;&nbsp;&nbsp;</span>'
+		if(re.WelfareTag.length != 0){
+			detail +='<br />'
+			detail +='<span class="work-line">'
+			for(var i in re.WelfareTag){
+				detail += '<span class="work-text04">'+re.WelfareTag[i].Name+'&nbsp;&nbsp;&nbsp;</span>'
+			}
+			detail +='</span>'
 		}
-		
-		detail +='</span>'
 		detail +='<br />'
 		detail +='<span class="work-line">'
-		detail +=	'<img src="assets/坐标.png" />'
+		detail +=	'<img src="assets/坐标.png"class="img" />'
 		detail +=	'<span class="work-text05">'+re.CompanyAddress+'</span>'
-		detail +='</span>'
+		if(re.IsUrgent == true){
+			var hour = Math.floor(re.CountDown/3600);
+			var minute = Math.floor((re.CountDown-hour*3600)/60);
+			var second = Math.floor((re.CountDown-hour*3600-minute*60)/60);
+			detail +=	'<img src="img/jiaji.png" class="img"/>'
+			detail +=	' <span class="work-text005">加急</span>'
+			detail += '</span>'
+			detail +=	'<br />'
+			detail +=	'<span class="work-line jiaji">'
+			detail +=		'<img src="img/daojishi.png" class="imgggg"/>'
+			detail +=		'<span class="CountDown">距结束'+hour+'：'+minute+'：'+second+'</span>'
+		}
+		detail +=	'</span>'
 		detail +='<br />'
 		detail += '<span class="work-line">'
 		detail += '<div class="btn-group" role="group" style="margin-right:30px;">'

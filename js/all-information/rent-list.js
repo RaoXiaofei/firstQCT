@@ -3,6 +3,8 @@ var rentID = ''
 var rentPrO = ''
 var rentCit = ''
 var rentReg = ''
+
+var rentPriImg = '';
 /*
  * 获取周边住房列表
  */
@@ -52,7 +54,8 @@ function getRentList(){
  */
 function ShowRentInfor(inforID){
 	rentID = inforID.id;
-	
+	rentPriImg = '';
+	$("#PCR03").replaceWith('<form class="form-inline" id="PCR03"><div id="distpicker-rent-infor'+rentID+'"><div class="form-group"><label class="sr-only" for="province6">Province</label><select class="select-frame02" id="rentcmbProvince"></select></div><div class="form-group"><label class="sr-only" for="city6">City</label><select class="select-frame02" id="rentcmbCity"></select></div><div class="form-group"><label class="sr-only" for="district6">District</label><select class="select-frame02" id="rentcmbArea"></select></div></div></form>')
 	$("#SaveRent").hide();
 	$("#modify-rent-button").show();
 	$('.information-right1').hide();
@@ -75,7 +78,7 @@ function ShowRentInfor(inforID){
 //				console.log(data.Result);	
 				var re = data.Result;
 				//显示省市区
-				$("#distpicker-rent-infor").distpicker({
+				$("#distpicker-rent-infor"+rentID).distpicker({
 					province: re.Province,
 					city: re.City,
 					district: re.Region
@@ -84,11 +87,12 @@ function ShowRentInfor(inforID){
 				$("#rentcmbCity").attr("disabled",true);
 				$("#rentcmbArea").attr("disabled",true);
 				
-				na += '<input type="text" class="input-text01" id="rent-name" value="'+re.Name+'"/>'
-				addr += '<input type="text" class="input-text01" id="rent-address" value="'+re.Address+'"/>'
-				intro += '<textarea class="input-textarea01" id="rent-intro">'+re.Introduce+'</textarea>'
+				$("#rent-name").val(re.Name);
+				$("#rent-address").val(re.Address);
+				$("#rent-intro").val(re.Introduce);
 				
-				$("#updateRentImga").attr("src",urlf+re.PriceImage);
+				$("#updateRentImga").attr("src", urlf+re.PriceImage);
+				rentPriImg = re.PriceImage;
 				
 				img += '<input type="file" id="updateRentInforImge" multiple="multiple"/>'
 				for (var i = 0; i < re.ImageList.length; i++) {
@@ -96,36 +100,30 @@ function ShowRentInfor(inforID){
 					img +=	'<img src="'+rentImg[i]+'" id="rent_imgList0"/>'					
 				}
 				
-				$("#rentName").html(na);
-				$("#rentAddress").html(addr);
-				$("#rentIntro").html(intro);
 				$("#updateRentInforImage").html(img);
 			}
 			else{
 				alert(data.Result);
 			}
-			
-			/*
-			 * 修改信息
-			 */
-			$("#modify-rent-button").click(function(){
-				//修改上传周边租房价目表和工作介绍图片
-				UploadPriceImg("updateRentImage", "updateRentImge", "updateRentImga");
-				UploadWorkImg("updateRentInforImage", "updateRentInforImge", "rent_imgList0");
-				
-				$("#modify-rent-button").hide();
-				$("#SaveRent").show();
-				
-				$("input").attr("readonly",false);
-				$('textarea').attr("readonly",false);
-				$("#rentcmbProvince").attr("disabled",false);
-				$("#rentcmbCity").attr("disabled",false);
-				$("#rentcmbArea").attr("disabled",false);
-			})
-			
 		}
 	});
 }
+
+//修改上传周边租房价目表和工作介绍图片
+UploadPriceImg("updateRentImage", "updateRentImge", "updateRentImga");
+UploadWorkImg("updateRentInforImage", "updateRentInforImge", "rent_imgList0");
+/*
+ * 修改信息
+ */
+$("#modify-rent-button").click(function(){
+	$("#modify-rent-button").hide();
+	$("#SaveRent").show();
+	$("input").attr("readonly",false);
+	$('textarea').attr("readonly",false);
+	$("#rentcmbProvince").attr("disabled",false);
+	$("#rentcmbCity").attr("disabled",false);
+	$("#rentcmbArea").attr("disabled",false);
+})
 /*
  * 修改周边租房信息
  */
@@ -139,8 +137,15 @@ $("#SaveRent").click(function(){
 	var Longitude = 0;
 	var Latitude = 0;
 	var Introduce = $("#rent-intro").val();
-	
-	var PriceImage = image_value;
+	var PriceImage1 = image_value;
+	var PriceImage = '';
+	if(PriceImage1 == ''){
+		PriceImage = rentPriImg;
+		rentPriImg = '';
+	}
+	else{
+		PriceImage = PriceImage1;
+	}
 	
 	var img=[];	
 	var ImageList = bimg.join(",")
@@ -174,6 +179,7 @@ $("#SaveRent").click(function(){
 				$("#rentcmbProvince").attr("disabled",true);
 				$("#rentcmbCity").attr("disabled",true);
 				$("#rentcmbArea").attr("disabled",true);
+				rentPriImg = '';
 			}
 			else{
 				alert(data.Result);

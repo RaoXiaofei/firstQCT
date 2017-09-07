@@ -22,7 +22,7 @@
 	margin-bottom: 40px;
 	float: left;
 }
-.work-text02{
+.work-text111{
 	margin-top: 36px;
 	margin-left: 650px;
 	margin-bottom: 40px;
@@ -31,10 +31,10 @@
 	margin-top: 40px;
 }
 .work-line01{
-	margin-top: 30px;
+	margin-top: 20px;
 }
 .work-line02{
-	margin-top: 95px;
+	margin-top: 35px;
 }
 .btn-danger {
     color: #fff;
@@ -129,4 +129,60 @@
     color: #fff;
     background-color: #FF6146;
     border-color: #FF6146;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.CountDown{
+	display: inline-block;
+    background-color: #f0f0f0;
+    border-radius: 40px;
+    height: 40px;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #9B9B9B;
+    padding-top: 8px;
+    width: 236px;
+    padding-left: 50px;
+    margin-left: 5px;
+}
+.imgggg{
+	position: absolute;
+    left: 0px;
+    top: -5px;
+}
+.work-text005{
+	display: inline-block;
+	font-family:"微软雅黑";
+	font-size: 20px;
+	color: #4A4A4A;	
+}
+.img{
+	margin-top: -10px;
+}
+.jiaji{
+	position: relative;
+	margin-bottom: 18px;
+}
+.workname{
+	margin-bottom: 23px;
 }

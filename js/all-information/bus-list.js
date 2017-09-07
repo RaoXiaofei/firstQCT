@@ -1,4 +1,5 @@
 var busID = ''
+var busCardImg = ''
 /*
  * 获取全国大巴信息
  */
@@ -47,14 +48,14 @@ function getBusInfor(){
  * 显示  修改  删除  全国大巴详细信息
  */
 function ShowBusInfor(inforID){
+	busCardImg = '';
 	busID = inforID.id;
-	
+	$("#PCR01").replaceWith('<form class="form-inline"  id="PCR01"><div id="distpicker-bus-infor'+busID+'"><div class="form-group"><label class="sr-only" for="province6">Province</label><select class="select-frame02" id="buscmbProvince"></select></div><div class="form-group"><label class="sr-only" for="city6">City</label><select class="select-frame02" id="buscmbCity"></select></div><div class="form-group"><label class="sr-only" for="district6">District</label><select class="select-frame02" id="buscmbArea"></select></div></div></form>')
 	$("#modify-bus-button").show();
 	$("#SaveBus").hide();
 	$('.information-right1').hide();
 	$(".information-right2").hide();
 	$('#bus-information').show();
-	
 	var na = '';
 	var addr = '';
 	var intro = '';
@@ -69,55 +70,64 @@ function ShowBusInfor(inforID){
 //	    		console.log(data.Result);
 	    		var re = data.Result;
 	    		//显示省市区
-	    		$("#distpicker-bus-infor").distpicker({
+	    		$("#distpicker-bus-infor"+busID).distpicker({
 					province: re.Province,
 					city: re.City,
-					district: re.Region
+					district: re.Region ,
 				})
-	    		$("#buscmbProvince").attr("disabled",true);
+   			 	$("#updateCardImga").attr("src", re.Image);
+   			 	busCardImg = re.Image;
+   			 	$('input').attr("readonly", true);
+   			 	$("#buscmbProvince").attr("disabled",true);
 	    		$("#buscmbCity").attr("disabled",true);
 	    		$("#buscmbArea").attr("disabled",true);
 	    		pro+= '<input type="text" class="input-text02" id="busProvince" value="'+re.Province+'" readonly="readonly"/>'
 				pro+= '<input type="text" class="input-text02" id="busCity" value="'+re.City+'" readonly="readonly"/>'
 				pro+= '<input type="text" class="input-text02" id="busArea" value="'+re.Region+'" readonly="readonly"/>'
 	    		
-	    		na += '<input type="text" class="input-text01" id="driver-name" value="'+re.DriverName+'" readonly="readonly"/>'
-	    		addr += '<input type="text" class="input-text01" id="car-address" value="'+re.Address+'" readonly="readonly"/>'
-	    		intro += '<textarea class="input-textarea01" id="car-intro" readonly="readonly">'+re.Introduce+'</textarea>'
-	    		num += '<input type="text" class="input-text01" id="car-number" value="'+re.LicensePlate+'" readonly="readonly"/>'
+	    		$("#driver-name").val(re.DriverName);
+	    		$("#car-address").val(re.Address);
+	    		$("#car-number").val(re.LicensePlate);
 	    		
-	    		$("#driverName").html(na);
-	    		$("#busNum").html(num);
-	    		$("#busAddr").html(addr);
-	    		$("#busIntro").html(intro);
 	    		$("#showPCR8").html(pro);
 	    	}
-	    	/*
-			 * 修改全国大巴信息
-			 */
-			$("#modify-bus-button").click(function(){
-				$(this).hide();
-				$("#SaveBus").show();
-				$('input').attr("readonly",false);
-				$('textarea').attr("readonly",false);
-				$("#buscmbProvince").attr("disabled",false);
-	    		$("#buscmbCity").attr("disabled",false);
-	    		$("#buscmbArea").attr("disabled",false);
-			})
 	    }
 	});
 }
+
+/*
+ * 修改全国大巴信息
+ */
+$("#modify-bus-button").click(function(){
+	UploadCardImg("updateCardImage", "updateCardImge", "updateCardImga");
+	$(this).hide();
+	$("#SaveBus").show();
+	$('input').attr("readonly",false);
+	$('textarea').attr("readonly",false);
+	$("#buscmbProvince").attr("disabled",false);
+	$("#buscmbCity").attr("disabled",false);
+	$("#buscmbArea").attr("disabled",false);
+})
 /*
  * 修改全国大巴信息
  */
 $("#SaveBus").click(function(){
+	var busImgID = busCardImg;
 	var Name = $("#driver-name").val();
 	var Plate = $("#car-number").val();
 	var Province = $("#buscmbProvince").val();
 	var City = $("#buscmbCity").val();
 	var Region = $("#buscmbArea").val();
-	var Address = $("#car-address").val()
-	var Introduce = $("#car-intro").val();
+	var Address = $("#car-address").val();
+	var Image1 = img_value;
+	var Image = '';
+	if(Image1 == ""){
+		Image = busImgID;
+		busCardImg = '';
+	}
+	else{
+		Image = Image1;
+	}
 	var id = busID;
 	$.ajax({
 		type:"post",
@@ -131,7 +141,9 @@ $("#SaveBus").click(function(){
   			"City": City,
   			"Region": Region,
   			"Address": Address,
-  			"Introduce": Introduce,
+  			"Image": Image ,
+  			"Longitude": 0,
+  			"Latitude": 0,
   			"Token": Token
 		},
 		success:function(data){
@@ -143,6 +155,7 @@ $("#SaveBus").click(function(){
 				$("#buscmbProvince").attr("disabled",true);
 	    		$("#buscmbCity").attr("disabled",true);
 	    		$("#buscmbArea").attr("disabled",true);
+	    		busCardImg = '';
 			}
 			else{
 				alert(data.Result);

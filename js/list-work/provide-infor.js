@@ -109,10 +109,22 @@ function GetRegion(){
 	//		console.log(data.Result);
 			if(data.Status == 1){		
 				for(var i in data.Result){
-					cityty += '<li class="list-work01" onclick="ChooseRegionP(this)"><span class="list-text03">'+data.Result[i].RegionName+'</span></li>' 				
+					cityty += '<li class="list-work01 list-text03 provide_region">'+data.Result[i].RegionName+'</li>' 				
 				}		
 				$("#list-city04").html(cityty);
 			}
+			$(".provide_region").eq(0).css("color","#000000");
+			$(".provide_region").each(function(){
+				$(this).click(function(){
+					$(".provide_region").css("color","#3DA8F5");
+					$(this).css("color", "#000000");
+					place1 = this.innerText;
+					place = place1;
+					pageIndex8 = 1;
+					pageSize = 1000;
+					GetProvideInfor1();
+				})
+			})
 		}
 	});
 }
@@ -160,20 +172,22 @@ function GetProvideInfor1(){
 function ChooseRegionP(e){
 	place1 = e.innerText;
 	this.place = place1;
-//	console.log(this.region);
 	this.pageIndex8 = 1;
 	this.pageSize = 1000;
 	GetProvideInfor1();
 }
-function ChooseSalaryP(e){
-	type1 = e.id;
-	this.salaryType = type1;
-//	console.log(this.salaryType);
-	this.pageIndex8 = 1;
-	this.pageSize = 1000;
-	GetProvideInfor1();
-}
-
+$(".provide_salary").eq(0).css("color","#000000");
+$(".provide_salary").each(function(){
+	$(this).click(function(){
+		$(".provide_salary").css("color", "#3DA8F5");
+		$(this).css("color","#000000");
+		type1 = $(this).attr("id");
+		this.salaryType = type1;
+		this.pageIndex8 = 1;
+		this.pageSize = 1000;
+		GetProvideInfor1();
+	})
+})
 /*
  * 显示供人信息详情
  */

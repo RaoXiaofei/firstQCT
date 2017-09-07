@@ -272,7 +272,7 @@ $("#issue-rent-button").click(function(){
 	});
 })
 
-
+UploadCardImg("cardImage", "cardImge", "cardImga")
 /*
  * 发布车辆信息
  */
@@ -283,7 +283,7 @@ $("#issue-bus-button").click(function(){
 	var City = $("#issue-buscmbCity").val();
 	var Region = $("#issue-buscmbArea").val();
 	var Address = $("#car-address").val()
-	var Introduce = $("#car-intro").val();
+	var Image = img_value;
 	var Token = getCookie("token");
 	
 	$.ajax({
@@ -297,7 +297,9 @@ $("#issue-bus-button").click(function(){
   			"City": City,
   			"Region": Region,
   			"Address": Address,
-  			"Introduce": Introduce,
+  			"Image": Image,
+  			"Longitude": 0,
+  			"Latitude": 0,
   			"Token": Token
 		},
 		success:function(data){

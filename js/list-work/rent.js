@@ -30,12 +30,21 @@ function GetRoundRentInfor(){
 		},
 		success:function(data){
 			if(data.Status == 1){
+//				console.log(data.Result)
 				var re = data.Result.List;
 				for(var i in re){
-					allRe += '<p class="index-guesstext" id="'+re[i].ID+'" onclick="ShowRentDe(this)">'
-					allRe +=	 '<span class="index-text04">'+re[i].Name+'</span>'
-					allRe +=	 '<span class="index-text05">'+re[i].Address+'</span>'
-					allRe += '</p>'
+//					if(re[i].IsUrgent == false){
+						allRe += '<p class="index-guesstext" id="'+re[i].ID+'" onclick="ShowRentDe(this)">'
+						allRe +=	 '<span class="index-text04">'+re[i].Name+'</span>'
+						allRe +=	 '<span class="index-text05">'+re[i].Address+'</span>'
+						allRe += '</p>'
+//					}
+//					else{
+//						allRe += '<p class="index-guesstext" id="'+re[i].ID+'" onclick="ShowRentDe(this)">'
+//						allRe +=	 '<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+//						allRe +=	 '<span class="index-text05">'+re[i].Address+'</span>'
+//						allRe += '</p>'
+//					}
 				}
 				
 				$("#allRen").html(allRe);
@@ -70,10 +79,18 @@ function GetMore10(){
 //						console.log(this.pageIndex9);								
 						var re = data.Result.List;
 						for(var i in re){
-							allRe += '<p class="index-guesstext" id="'+re[i].ID+'" onclick="ShowRentDe(this)">'
-							allRe +=	 '<span class="index-text04">'+re[i].Name+'</span>'
-							allRe +=	 '<span class="index-text05">'+re[i].Address+'</span>'
-							allRe += '</p>'
+//							if(re[i].IsUrgent == false){
+								allRe += '<p class="index-guesstext" id="'+re[i].ID+'" onclick="ShowRentDe(this)">'
+								allRe +=	 '<span class="index-text04">'+re[i].Name+'</span>'
+								allRe +=	 '<span class="index-text05">'+re[i].Address+'</span>'
+								allRe += '</p>'
+//							}
+//							else{
+//								allRe += '<p class="index-guesstext" id="'+re[i].ID+'" onclick="ShowRentDe(this)">'
+//								allRe +=	 '<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+//								allRe +=	 '<span class="index-text05">'+re[i].Address+'</span>'
+//								allRe += '</p>'
+//							}
 						}
 						
 						$("#allRen").html(allRe);

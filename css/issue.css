@@ -27,7 +27,7 @@
 #recruit-select01,#recruit-select02,#recruit-select03,
 #resume-select01,#resume-select02,#resume-select03,
 #select-frame02{
-	width: 110px;
+	width: 125px;
 	height: 34px;
 	background: #FFFFFF;
 	border: 1px solid #CCCCCC;
@@ -43,7 +43,6 @@
 	margin-right: 30px;
 }
 .issuetop-text01{
-	margin-left: -45px;
 	width: 140px;
 	font-family:"微软雅黑";
 	font-size: 20px;
@@ -64,10 +63,8 @@
 	font-size: 18px;
 	color: #FFFFFF;
 }
-#issue-recruit-button,#issue-resume-button,#issue-provide-button,#issue-rent-button,
-#issue-summer-button,#issue-winner-button,#issue-short-button,#issue-abroad-button,
-#issue-bus-button,#issuetop-button01{
-	margin-left: -45px;
+.issue_button{
+	margin-left: 143px;
 	width: 88px;
 	background: #FF6146;
 	border: 1px solid #FF6146;
@@ -88,7 +85,7 @@
 	border-radius: 3px;
 	width:300px;
 	height:82px;
-	margin-left: 100px;
+	margin-left: 142px;
 	resize: none;
 }
 #guess01{
@@ -105,7 +102,7 @@
 }
 .issuetop-text06{
 	position: absolute;
-	margin-left: -45px;
+	/*margin-left: -45px;*/
 	width: 140px;
 	font-family:"微软雅黑";
 	font-size: 20px;

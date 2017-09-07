@@ -56,7 +56,7 @@ $.ajax({
 		resume1 += '<div class="btn-group" role="group">'
 		resume1 +=	  '<button type="button" class="btn btn-default dropdown-toggle btn-danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">电话联系</button>'
 		resume1 +=	  '<ul class="dropdown-menu">'
-		resume1 +=		 '<li>'+re.Phone+'</li>'
+		resume1 +=		 '<li>'+re.phone+'</li>'
 		resume1 +=	  '</ul>'
 		resume1 +=	'</div>'
 		resume1 += 		'&nbsp;&nbsp;&nbsp;&nbsp;'

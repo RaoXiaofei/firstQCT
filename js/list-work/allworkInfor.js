@@ -1,15 +1,26 @@
 var AllPo = '';
+var hr = window.location.href;
 
 /*
  * 全部工作全局变量
  */
-var keyWord = "-1";
+var keyWord=''
+var keyWord1 = "-1";
 var place = "全部"; 
 var pos = "全部"; 
 var salaryType = 0; 
 var pageIndex = 1;  
 var region = "";
 var city = "";
+
+if(getCookie("indexKey") == null){
+	keyWord = keyWord1;
+}
+else{
+	var keywwwww = unescape(getCookie("indexKey")) ;
+	delCookie("indexKey");
+	keyWord = keywwwww;
+}
 /*
  * 加载页面全局
  */
@@ -54,11 +65,24 @@ $.ajax({
 		if(data.Status == 1){
 			for(var i in data.Result){
 				for(var j in data.Result[i].PositionList){
-					allWork +=	'<li class="list-work01" id="'+data.Result[i].PositionList[j].ID+'"onclick="ChoosePosi(this)"><span class="list-text03">'+data.Result[i].PositionList[j].Name+'</span></li>'
+					allWork +=	'<li class="list-work01 list-text03 allwork_position" id="'+data.Result[i].PositionList[j].ID+'">'+data.Result[i].PositionList[j].Name+'</li>'
 				}
 			}
 			$("#list-job01").html(allWork);
 		}
+		$(".allwork_position").eq(0).css("color","#000000");
+		$(".allwork_position").each(function(){
+			$(this).click(function(){
+				$(".allwork_position").css("color","#3DA8F5");
+				$(this).css("color","#000000");
+				pos1 = this.innerText;
+				pos = pos1;
+				pageIndex = 1;
+				pageSize = 1000;
+				keyWord = '-1';
+				GetAllPosition1()
+			})
+		})
 	}
 });
 
@@ -76,10 +100,23 @@ $.ajax({
 //		console.log(data.Result);
 		if(data.Status == 1){		
 			for(var i in data.Result){
-				cityty += '<li class="list-work01" onclick="ChooseRegion(this)"><span class="list-text03">'+data.Result[i].RegionName+'</span></li>' 				
+				cityty += '<li class="list-work01 list-text03 allwork_region">'+data.Result[i].RegionName+'</li>' 				
 			}		
 			$("#list-city01").html(cityty);
 		}
+		$(".allwork_region").eq(0).css("color", "#000000");
+		$(".allwork_region").each(function(){
+			$(this).click(function(){
+				$(".allwork_region").css("color", "#3DA8F5");
+				$(this).css("color","#000000")
+				place1 = this.innerText;
+				place = place1;
+				pageIndex = 1;
+				pageSize = 1000;
+				keyWord = '-1';
+				GetAllPosition1()
+			})
+		})
 	}
 });
 
@@ -100,18 +137,27 @@ function GetAllPosition(){
 		  	"PageIndex": this.pageIndex,
 		  	"PageSize": this.pageSize,
 		  	"Lng": 0,
-		  	"Lat": 0,
-		  	"City": ""
+		  	"Lat": 0
 		},
 		success:function(data){
 //			console.log(data.Result)
 			if(data.Status == 1){					
 				for(var i in data.Result.List){
-					AllPo += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
-					AllPo += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
-					AllPo += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
-					AllPo += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
-					AllPo += '</p>'
+					if(data.Result.List[i].IsUrgent == false){
+						AllPo += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
+						AllPo += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
+						AllPo += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+						AllPo += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
+						AllPo += '</p>'
+					}
+					else{
+						AllPo += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
+						AllPo += '<span class="index-text04">'+data.Result.List[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+						AllPo += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+						AllPo += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
+						AllPo += '</p>'
+					}
+					
 				}
 						
 				$("#allP").html(AllPo);
@@ -144,17 +190,25 @@ function GetMore1(){
 				  	"PageIndex": this.pageIndex,
 				  	"PageSize": this.pageSize,
 				  	"Lng": 0,
-				  	"Lat": 0,
-				  	"City": ""
+				  	"Lat": 0
 				},
 				success:function(data){
 					if(data.Status == 1){			
 						for(var i in data.Result.List){
-							AllPo += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
-							AllPo += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
-							AllPo += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
-							AllPo += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
-							AllPo += '</p>'
+							if(data.Result.List[i].IsUrgent == false){
+								AllPo += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
+								AllPo += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
+								AllPo += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+								AllPo += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
+								AllPo += '</p>'
+							}
+							else{
+								AllPo += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
+								AllPo += '<span class="index-text04">'+data.Result.List[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+								AllPo += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+								AllPo += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
+								AllPo += '</p>'
+							}
 						}											
 						$("#allP").html(AllPo);
 						this.isNext = data.Result.IsNext;
@@ -188,18 +242,26 @@ function GetAllPosition1(){
 		  	"PageIndex": this.pageIndex,
 		  	"PageSize": this.pageSize,
 		  	"Lng": 0,
-		  	"Lat": 0,
-		  	"City": ""
+		  	"Lat": 0
 		},
 		success:function(data){
 //			console.log(data.Result)
 			if(data.Status == 1){					
 				for(var i in data.Result.List){
-					Allo += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
-					Allo += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
-					Allo += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
-					Allo += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
-					Allo += '</p>'
+					if(data.Result.List[i].IsUrgent == false){
+						Allo += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
+						Allo += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
+						Allo += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+						Allo += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
+						Allo += '</p>'
+					}
+					else{
+						Allo += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
+						Allo += '<span class="index-text04">'+data.Result.List[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+						Allo += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+						Allo += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
+						Allo += '</p>'
+					}
 				}
 						
 				$("#allP").html(Allo);
@@ -217,34 +279,19 @@ function GetAllPosition1(){
 /*
  * 根据条件筛选全部工作
  */
-function ChoosePosi(e){
-	pos1 = e.innerText;
-	this.pos = pos1
-//	console.log(this.pos)
-	this.pageIndex = 1;
-	this.pageSize = 1000;
-	this.keyWord = '-1';
-	GetAllPosition1()
-}
-function ChooseRegion(e){
-	place1 = e.innerText;
-	this.place = place1;
-//	console.log(this.region);
-	this.pageIndex = 1;
-	this.pageSize = 1000;
-	this.keyWord = '-1';
-	GetAllPosition1()
-}
-function ChooseSalary(e){
-	type1 = e.id;
-	this.salaryType = type1;
-//	console.log(this.salaryType);
-	this.pageIndex = 1;
-	this.pageSize = 1000;
-	this.keyWord = '-1';
-	GetAllPosition1()
-}
-
+$(".allwork_salary").eq(0).css("color", "#000000");
+$(".allwork_salary").each(function(){
+	$(this).click(function(){
+		$(".allwork_salary").css("color","#3DA8F5");
+		$(this).css("color","#000000");
+		type1 = $(this).attr("id");
+		salaryType = type1;
+		pageIndex = 1;
+		pageSize = 1000;
+		keyWord = '-1';
+		GetAllPosition1()
+	})
+})
 /*
  * 显示工作详情
  */

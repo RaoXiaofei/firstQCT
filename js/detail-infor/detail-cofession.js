@@ -22,7 +22,7 @@ $.ajax({
 	url:urlf+"api/Company/ProvideDetail?id="+listID,
 	async:true,
 	success:function(data){
-//		console.log(data.Result);
+		console.log(data.Result);
 		var re = data.Result;
 		
 		pro += '<span class="work-line" style="float: right;cursor: pointer;"onclick="Report()">'
@@ -34,14 +34,19 @@ $.ajax({
 		pro += 		'<span class="work-text02">'+re.WorkType+'</span><span class="work-text03">'+re.Count+'人</span>'
 		pro += '</span>'
 		pro += '<br />'
-		pro += '<span class="work-line">'
-		pro += 		'<span class="work-text04">'+re.Salary+'元 /月&nbsp;&nbsp;&nbsp;100人</span>'
-		pro += '</span>'
-		pro += '<br />'
-		pro += '<span class="work-line">'
-		pro += 		'<img src="assets/坐标.png" />'
-		pro += 		'<span class="work-text05">&nbsp;&nbsp;'+re.Address+'</span>'
-		pro += '</span>'
+		pro +='<span class="work-line">'
+		pro +=	'<img src="assets/坐标.png"class="img" />'
+		pro +=	'<span class="work-text05">'+re.Address+'</span>'
+		if(re.IsUrgent == true){
+			pro +=	'<img src="img/jiaji.png" class="img"/>'
+			pro +=	' <span class="work-text005">加急</span>'
+			pro += '</span>'
+			pro +=	'<br />'
+			pro +=	'<span class="work-line jiaji">'
+			pro +=		'<img src="img/daojishi.png" class="imgggg"/>'
+			pro +=		'<span class="CountDown">距结束00：00：40</span>'
+		}
+		pro +=	'</span>'
 		pro += '<br />'
 		pro += '<span class="work-line">'
 		pro += '<div class="btn-group" role="group" style = "margin-right:30px">'

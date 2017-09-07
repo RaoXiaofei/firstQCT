@@ -50,6 +50,7 @@ function getProvideList(){
  */
 function ShowProvideInfor(inforID){
 	provideID = inforID.id;	
+	$("#PCR02").replaceWith('<form class="form-inline"  id="PCR02"><div id="distpicker-provide-infor'+provideID+'"><div class="form-group"><label class="sr-only" for="province6">Province</label><select class="select-frame02" id="providecmbProvince"></select></div><div class="form-group"><label class="sr-only" for="city6">City</label><select class="select-frame02" id="providecmbCity"></select></div><div class="form-group"><label class="sr-only" for="district6">District</label><select class="select-frame02" id="providecmbArea"></select></div></div></form>');
 	$("#modify-provide-button").show();
 	$("#SaveProvide").hide();
 	$('.information-right1').hide();
@@ -72,7 +73,7 @@ function ShowProvideInfor(inforID){
 //				console.log(data.Result);
 				var re = data.Result;
 				//显示省市区
-				$("#distpicker-provide-infor").distpicker({
+				$("#distpicker-provide-infor"+provideID).distpicker({
 					province: re.Province,
 					city: re.City,
 					district: re.Region

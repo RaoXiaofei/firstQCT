@@ -45,10 +45,19 @@ function GetSummerJob(){
 			var re = data.Result.List;
 			if(data.Status == 1){
 				for(var i in re){
-					allS += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-					allS +=		'<span class="index-text04">'+re[i].Name+'</span>'
-					allS +=		'<span class="index-text05">'+re[i].Address+'</span>'
-					allS += '</p>'				
+					if(re[i].IsUrgent == false){
+						allS += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
+						allS +=		'<span class="index-text04">'+re[i].Name+'</span>'
+						allS +=		'<span class="index-text05">'+re[i].Address+'</span>'
+						allS += '</p>'
+					}
+					else{
+						allS += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
+						allS +=		'<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+						allS +=		'<span class="index-text05">'+re[i].Address+'</span>'
+						allS += '</p>'
+					}
+									
 				}
 				$("#allSum").html(allS);
 				this.isNext = data.Result.IsNext
@@ -78,10 +87,18 @@ function GetMore4(){
 					var re = data.Result.List;
 					if(data.Status == 1){
 						for(var i in re){
-							allS += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-							allS +=		'<span class="index-text04">'+re[i].Name+'</span>'
-							allS +=		'<span class="index-text05">'+re[i].Address+'</span>'
-							allS += '</p>'				
+							if(re[i].IsUrgent == false){
+								allS += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
+								allS +=		'<span class="index-text04">'+re[i].Name+'</span>'
+								allS +=		'<span class="index-text05">'+re[i].Address+'</span>'
+								allS += '</p>'
+							}
+							else{
+								allS += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
+								allS +=		'<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+								allS +=		'<span class="index-text05">'+re[i].Address+'</span>'
+								allS += '</p>'
+							}			
 						}
 						$("#allSum").html(allS);
 						this.isNext = data.Result.IsNext;
@@ -129,12 +146,19 @@ function GetShortList(){
 		success:function(data){
 			var re = data.Result.List;
 //			console.log(re);
-			
 			for(var i in re){
-				allSh += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-				allSh +=	  '<span class="index-text04">'+re[i].Name+'</span>'
-				allSh +=	  '<span class="index-text05">'+re[i].Address+'</span>'
-				allSh += '</p>'			
+				if(re[i].IsUrgent == false){
+					allSh += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
+					allSh +=	  '<span class="index-text04">'+re[i].Name+'</span>'
+					allSh +=	  '<span class="index-text05">'+re[i].Address+'</span>'
+					allSh += '</p>'	
+				}
+				else{
+					allSh += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
+					allSh +=	  '<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+					allSh +=	  '<span class="index-text05">'+re[i].Address+'</span>'
+					allSh += '</p>'
+				}
 			}
 			
 			$("#allSho").html(allSh);
@@ -164,10 +188,18 @@ function GetMore6(){
 					var re = data.Result.List;
 					
 					for(var i in re){
-						allSh += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-						allSh +=	  '<span class="index-text04">'+re[i].Name+'</span>'
-						allSh +=	  '<span class="index-text05">'+re[i].Address+'</span>'
-						allSh += '</p>'			
+						if(re[i].IsUrgent == false){
+							allSh += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
+							allSh +=	  '<span class="index-text04">'+re[i].Name+'</span>'
+							allSh +=	  '<span class="index-text05">'+re[i].Address+'</span>'
+							allSh += '</p>'	
+						}
+						else{
+							allSh += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
+							allSh +=	  '<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+							allSh +=	  '<span class="index-text05">'+re[i].Address+'</span>'
+							allSh += '</p>'
+						}		
 					}
 					
 					$("#allSho").html(allSh);
@@ -214,12 +246,19 @@ function GetAbroadList(){
 //			console.log(data.Result);
 			re = data.Result.List;
 			for(var i in re){
-				allAb += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-				allAb +=	 '<span class="index-text04">'+re[i].Name+'</span>'
-				allAb +=	 '<span class="index-text05">'+re[i].Address+'</span>'
-				allAb += '</p>'
+				if(re[i].IsUrgent == false){
+					allAb += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
+					allAb +=	 '<span class="index-text04">'+re[i].Name+'</span>'
+					allAb +=	 '<span class="index-text05">'+re[i].Address+'</span>'
+					allAb += '</p>'
+				}
+				else{
+					allAb += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
+					allAb +=	 '<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+					allAb +=	 '<span class="index-text05">'+re[i].Address+'</span>'
+					allAb += '</p>'
+				}
 			}
-			
 			$("#allAbl").html(allAb);
 			
 			this.isNext = data.Result.IsNext
@@ -249,10 +288,18 @@ function GetMore7(){
 //					console.log(data.Result);
 					re = data.Result.List;
 					for(var i in re){
-						allAb += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-						allAb +=	 '<span class="index-text04">'+re[i].Name+'</span>'
-						allAb +=	 '<span class="index-text05">'+re[i].Address+'</span>'
-						allAb += '</p>'
+						if(re[i].IsUrgent == false){
+							allAb += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
+							allAb +=	 '<span class="index-text04">'+re[i].Name+'</span>'
+							allAb +=	 '<span class="index-text05">'+re[i].Address+'</span>'
+							allAb += '</p>'
+						}
+						else{
+							allAb += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
+							allAb +=	 '<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+							allAb +=	 '<span class="index-text05">'+re[i].Address+'</span>'
+							allAb += '</p>'
+						}
 					}
 					
 					$("#allAbl").html(allAb);
@@ -302,10 +349,18 @@ function GetWinnerInfor(){
 //				console.log(data.Result);			
 				var re = data.Result.List;		
 				for(var i in re){
-					allWi += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-					allWi += 	'<span class="index-text04">'+re[i].Name+'</span>'
-					allWi += 	'<span class="index-text05">'+re[i].Address+'</span>'
-					allWi += '</p>'
+					if(re[i].IsUrgent == false){
+						allWi += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
+						allWi += 	'<span class="index-text04">'+re[i].Name+'</span>'
+						allWi += 	'<span class="index-text05">'+re[i].Address+'</span>'
+						allWi += '</p>'
+					}
+					else{
+						allWi += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
+						allWi += 	'<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+						allWi += 	'<span class="index-text05">'+re[i].Address+'</span>'
+						allWi += '</p>'
+					}
 				}
 				
 				$("#allWinn").html(allWi);
@@ -338,10 +393,18 @@ function GetMore9(){
 //						console.log(data.Result);			
 						var re = data.Result.List;		
 						for(var i in re){
-							allWi += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-							allWi += 	'<span class="index-text04">'+re[i].Name+'</span>'
-							allWi += 	'<span class="index-text05">'+re[i].Address+'</span>'
-							allWi += '</p>'
+							if(re[i].IsUrgent == false){
+								allWi += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
+								allWi += 	'<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+								allWi += 	'<span class="index-text05">'+re[i].Address+'</span>'
+								allWi += '</p>'
+							}
+							else{
+								allWi += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
+								allWi += 	'<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+								allWi += 	'<span class="index-text05">'+re[i].Address+'</span>'
+								allWi += '</p>'
+							}
 						}
 						
 						$("#allWinn").html(allWi);
