@@ -33,10 +33,10 @@ function GetProvideInfor(){
 				var re = data.Result.List;			
 				for(var i in re){
 					allPro += '<p class="index-guesstext" id="'+re[i].ID+'" onclick = "ShowProDe(this)">'
-					allPro +=	'<span class="index-text20">'+re[i].WorkType+'</span>'
-					allPro +=	'<span class="index-text21">'+re[i].CompanyName+'</span>'
-					allPro +=	'<span class="index-text22">'+re[i].Address+'</span>'
-					allPro +=	'<span class="index-text23">'+re[i].Count+'</span>'
+					allPro +=	'<span class="index-text04">'+re[i].WorkType+'</span>'
+					allPro +=	'<span class="index-text05">'+re[i].CompanyName+'</span>'
+					allPro +=	'<span class="index-text12">'+re[i].Address+'</span>'
+					allPro +=	'<span class="index-text07">'+re[i].Count+'</span>'
 					allPro += '</p>'
 				}
 				
@@ -74,7 +74,7 @@ function GetMore8(){
 							allPro += '<p class="index-guesstext" id="'+re[i].ID+'" onclick = "ShowProDe(this)">'
 							allPro +=	'<span class="index-text04">'+re[i].WorkType+'</span>'
 							allPro +=	'<span class="index-text05">'+re[i].CompanyName+'</span>'
-							allPro +=	'<span class="index-text06">'+re[i].Address+'</span>'
+							allPro +=	'<span class="index-text12">'+re[i].Address+'</span>'
 							allPro +=	'<span class="index-text07">'+re[i].Count+'</span>'
 							allPro += '</p>'
 						}								
@@ -90,7 +90,14 @@ function GetMore8(){
 			});
 		}
 		else{
-			alert("没有更多了")
+			layer.open({ 
+				content: "没有更多了",
+				title: '温馨提示',
+				area: ['320px', '180px'],
+				success: function(layer) {
+					layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+				},
+			});
 		}
     }
 }
@@ -150,7 +157,7 @@ function GetProvideInfor1(){
 					all += '<p class="index-guesstext" id="'+re[i].ID+'" onclick = "ShowProDe(this)">'
 					all +=	'<span class="index-text04">'+re[i].WorkType+'</span>'
 					all +=	'<span class="index-text05">'+re[i].CompanyName+'</span>'
-					all +=	'<span class="index-text06">'+re[i].Address+'</span>'
+					all +=	'<span class="index-text12">'+re[i].Address+'</span>'
 					all +=	'<span class="index-text07">'+re[i].Count+'</span>'
 					all += '</p>'
 				}

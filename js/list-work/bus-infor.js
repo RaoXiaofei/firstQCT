@@ -27,18 +27,18 @@ function GetBusList(){
 				for(var i in re){
 					if(re[i].IsUrgent == false){
 						allB += '<p class="index-guesstext">'
-						allB +=		'<span class="index-text20">'+re[i].DriverName+'</span>'
-						allB +=		'<span class="index-text21">'+re[i].Address+'</span>'
-						allB +=		'<span class="index-text22">'+re[i].LicensePlate+'</span>'
-						allB +=		'<span class="index-text23">'+re[i].Phone+'</span>'	
+						allB +=		'<span class="index-text04">'+re[i].DriverName+'</span>'
+						allB +=		'<span class="index-text05">'+re[i].Address+'</span>'
+						allB +=		'<span class="index-text12">'+re[i].LicensePlate+'</span>'
+						allB +=		'<span class="index-text07">'+re[i].Phone+'</span>'	
 						allB +=	'</p>'
 					}
 					else{
 						allB += '<p class="index-guesstext">'
-						allB +=		'<span class="index-text20">'+re[i].DriverName+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
-						allB +=		'<span class="index-text21">'+re[i].Address+'</span>'
-						allB +=		'<span class="index-text22">'+re[i].LicensePlate+'</span>'
-						allB +=		'<span class="index-text23">'+re[i].Phone+'</span>'	
+						allB +=		'<span class="index-text04">'+re[i].DriverName+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+						allB +=		'<span class="index-text05">'+re[i].Address+'</span>'
+						allB +=		'<span class="index-text12">'+re[i].LicensePlate+'</span>'
+						allB +=		'<span class="index-text07">'+re[i].Phone+'</span>'	
 						allB +=	'</p>'
 					}
 				}
@@ -68,18 +68,18 @@ function GetMore5(){
 						for(var i in re){
 							if(re[i].IsUrgent == false){
 								allB += '<p class="index-guesstext">'
-								allB +=		'<span class="index-text20">'+re[i].DriverName+'</span>'
-								allB +=		'<span class="index-text21">'+re[i].Address+'</span>'
-								allB +=		'<span class="index-text22">'+re[i].LicensePlate+'</span>'
-								allB +=		'<span class="index-text23">'+re[i].Phone+'</span>'	
+								allB +=		'<span class="index-text04">'+re[i].DriverName+'</span>'
+								allB +=		'<span class="index-text05">'+re[i].Address+'</span>'
+								allB +=		'<span class="index-text12">'+re[i].LicensePlate+'</span>'
+								allB +=		'<span class="index-text07">'+re[i].Phone+'</span>'	
 								allB +=	'</p>'
 							}
 							else{
 								allB += '<p class="index-guesstext">'
-								allB +=		'<span class="index-text20">'+re[i].DriverName+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
-								allB +=		'<span class="index-text21">'+re[i].Address+'</span>'
-								allB +=		'<span class="index-text22">'+re[i].LicensePlate+'</span>'
-								allB +=		'<span class="index-text23">'+re[i].Phone+'</span>'	
+								allB +=		'<span class="index-text04">'+re[i].DriverName+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+								allB +=		'<span class="index-text05">'+re[i].Address+'</span>'
+								allB +=		'<span class="index-text12">'+re[i].LicensePlate+'</span>'
+								allB +=		'<span class="index-text07">'+re[i].Phone+'</span>'	
 								allB +=	'</p>'
 							}		
 						}
@@ -97,7 +97,14 @@ function GetMore5(){
 			});
 		}
 		else{
-			alert("没有更多了")
+			layer.open({ 
+				content: "没有更多了",
+				title: '温馨提示',
+				area: ['320px', '180px'],
+				success: function(layer) {
+					layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+				},
+			});
 		}
 	}
 }

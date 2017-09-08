@@ -51,14 +51,14 @@ $.ajax({
 		if(re.IsUrgent == true){
 			var hour = Math.floor(re.CountDown/3600);
 			var minute = Math.floor((re.CountDown-hour*3600)/60);
-			var second = Math.floor((re.CountDown-hour*3600-minute*60)/60);
+			var second = Math.floor(re.CountDown-hour*3600-minute*60);
 			detail +=	'<img src="img/jiaji.png" class="img"/>'
 			detail +=	' <span class="work-text005">加急</span>'
 			detail += '</span>'
 			detail +=	'<br />'
 			detail +=	'<span class="work-line jiaji">'
 			detail +=		'<img src="img/daojishi.png" class="imgggg"/>'
-			detail +=		'<span class="CountDown">距结束'+hour+'：'+minute+'：'+second+'</span>'
+			detail +=		'<span class="CountDown">距结束&nbsp;'+hour+'：'+minute+'：'+second+'</span>'
 		}
 		detail +=	'</span>'
 		detail +='<br />'
@@ -97,12 +97,36 @@ function ReportThis(){
 		beforeSend: function(xhr) {
 			xhr.setRequestHeader("Authorization", getCookie('token'));
 		},	
+		error:function(){
+	    	layer.open({
+				content: "请先登录",
+				title: '温馨提示',
+				area: ['320px', '180px'],
+				success: function(layer) {
+					layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+				},
+			});
+	    },
 		success:function(data){
 			if(data.Status == 1){
-				alert(data.Result);
+				layer.open({
+					content: data.Result,
+					title: '温馨提示',
+					area: ['320px', '180px'],
+					success: function(layer) {
+						layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+					},
+				});
 			}
 			else{
-				alert(data.Status);
+				layer.open({
+					content: data.Result,
+					title: '温馨提示',
+					area: ['320px', '180px'],
+					success: function(layer) {
+						layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+					},
+				});
 			}
 		}
 	});

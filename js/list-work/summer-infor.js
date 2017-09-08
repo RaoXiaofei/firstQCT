@@ -47,17 +47,18 @@ function GetSummerJob(){
 				for(var i in re){
 					if(re[i].IsUrgent == false){
 						allS += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-						allS +=		'<span class="index-text04">'+re[i].Name+'</span>'
-						allS +=		'<span class="index-text05">'+re[i].Address+'</span>'
+						allS +=		'<span class="index-text13">'+re[i].Name+'</span>'
+						allS +=		'<span class="index-text14">'+re[i].Address+'</span>'
+						allS +=		'<span class="index-text15">'+re[i].Distance+'</span>'
 						allS += '</p>'
 					}
 					else{
 						allS += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-						allS +=		'<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
-						allS +=		'<span class="index-text05">'+re[i].Address+'</span>'
+						allS +=		'<span class="index-text13">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+						allS +=		'<span class="index-text14">'+re[i].Address+'</span>'
+						allS +=		'<span class="index-text15">'+re[i].Distance+'</span>'
 						allS += '</p>'
 					}
-									
 				}
 				$("#allSum").html(allS);
 				this.isNext = data.Result.IsNext
@@ -89,16 +90,18 @@ function GetMore4(){
 						for(var i in re){
 							if(re[i].IsUrgent == false){
 								allS += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-								allS +=		'<span class="index-text04">'+re[i].Name+'</span>'
-								allS +=		'<span class="index-text05">'+re[i].Address+'</span>'
+								allS +=		'<span class="index-text13">'+re[i].Name+'</span>'
+								allS +=		'<span class="index-text14">'+re[i].Address+'</span>'
+								allS +=		'<span class="index-text15">'+re[i].Distance+'</span>'
 								allS += '</p>'
 							}
 							else{
 								allS += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-								allS +=		'<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
-								allS +=		'<span class="index-text05">'+re[i].Address+'</span>'
+								allS +=		'<span class="index-text13">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+								allS +=		'<span class="index-text14">'+re[i].Address+'</span>'
+								allS +=		'<span class="index-text15">'+re[i].Distance+'</span>'
 								allS += '</p>'
-							}			
+							}		
 						}
 						$("#allSum").html(allS);
 						this.isNext = data.Result.IsNext;
@@ -113,7 +116,14 @@ function GetMore4(){
 			});
 		}
 		else{
-			alert("没有更多了")
+			layer.open({ 
+				content: "没有更多了",
+				title: '温馨提示',
+				area: ['320px', '180px'],
+				success: function(layer) {
+					layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+				},
+			});
 		}
     }
 }
@@ -149,14 +159,16 @@ function GetShortList(){
 			for(var i in re){
 				if(re[i].IsUrgent == false){
 					allSh += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-					allSh +=	  '<span class="index-text04">'+re[i].Name+'</span>'
-					allSh +=	  '<span class="index-text05">'+re[i].Address+'</span>'
-					allSh += '</p>'	
+					allSh +=		'<span class="index-text13">'+re[i].Name+'</span>'
+					allSh +=		'<span class="index-text14">'+re[i].Address+'</span>'
+					allSh +=		'<span class="index-text15">'+re[i].Distance+'</span>'
+					allSh += '</p>'
 				}
 				else{
 					allSh += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-					allSh +=	  '<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
-					allSh +=	  '<span class="index-text05">'+re[i].Address+'</span>'
+					allSh +=		'<span class="index-text13">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+					allSh +=		'<span class="index-text14">'+re[i].Address+'</span>'
+					allSh +=		'<span class="index-text15">'+re[i].Distance+'</span>'
 					allSh += '</p>'
 				}
 			}
@@ -190,16 +202,18 @@ function GetMore6(){
 					for(var i in re){
 						if(re[i].IsUrgent == false){
 							allSh += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-							allSh +=	  '<span class="index-text04">'+re[i].Name+'</span>'
-							allSh +=	  '<span class="index-text05">'+re[i].Address+'</span>'
-							allSh += '</p>'	
+							allSh +=		'<span class="index-text13">'+re[i].Name+'</span>'
+							allSh +=		'<span class="index-text14">'+re[i].Address+'</span>'
+							allSh +=		'<span class="index-text15">'+re[i].Distance+'</span>'
+							allSh += '</p>'
 						}
 						else{
 							allSh += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-							allSh +=	  '<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
-							allSh +=	  '<span class="index-text05">'+re[i].Address+'</span>'
+							allSh +=		'<span class="index-text13">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+							allSh +=		'<span class="index-text14">'+re[i].Address+'</span>'
+							allSh +=		'<span class="index-text15">'+re[i].Distance+'</span>'
 							allSh += '</p>'
-						}		
+						}	
 					}
 					
 					$("#allSho").html(allSh);
@@ -212,7 +226,14 @@ function GetMore6(){
 			});
 		}
     	else{
-    		alert("没有更多了")
+    		layer.open({ 
+				content: "没有更多了",
+				title: '温馨提示',
+				area: ['320px', '180px'],
+				success: function(layer) {
+					layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+				},
+			});
     	}
     }
 }
@@ -248,14 +269,16 @@ function GetAbroadList(){
 			for(var i in re){
 				if(re[i].IsUrgent == false){
 					allAb += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-					allAb +=	 '<span class="index-text04">'+re[i].Name+'</span>'
-					allAb +=	 '<span class="index-text05">'+re[i].Address+'</span>'
+					allAb +=		'<span class="index-text13">'+re[i].Name+'</span>'
+					allAb +=		'<span class="index-text14">'+re[i].Address+'</span>'
+					allAb +=		'<span class="index-text15">'+re[i].Distance+'</span>'
 					allAb += '</p>'
 				}
 				else{
 					allAb += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-					allAb +=	 '<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
-					allAb +=	 '<span class="index-text05">'+re[i].Address+'</span>'
+					allAb +=		'<span class="index-text13">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+					allAb +=		'<span class="index-text14">'+re[i].Address+'</span>'
+					allAb +=		'<span class="index-text15">'+re[i].Distance+'</span>'
 					allAb += '</p>'
 				}
 			}
@@ -290,14 +313,16 @@ function GetMore7(){
 					for(var i in re){
 						if(re[i].IsUrgent == false){
 							allAb += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-							allAb +=	 '<span class="index-text04">'+re[i].Name+'</span>'
-							allAb +=	 '<span class="index-text05">'+re[i].Address+'</span>'
+							allAb +=		'<span class="index-text13">'+re[i].Name+'</span>'
+							allAb +=		'<span class="index-text14">'+re[i].Address+'</span>'
+							allAb +=		'<span class="index-text15">'+re[i].Distance+'</span>'
 							allAb += '</p>'
 						}
 						else{
 							allAb += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-							allAb +=	 '<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
-							allAb +=	 '<span class="index-text05">'+re[i].Address+'</span>'
+							allAb +=		'<span class="index-text13">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+							allAb +=		'<span class="index-text14">'+re[i].Address+'</span>'
+							allAb +=		'<span class="index-text15">'+re[i].Distance+'</span>'
 							allAb += '</p>'
 						}
 					}
@@ -312,7 +337,14 @@ function GetMore7(){
 			});
 		}
 		else{
-			alert("没有更多了")
+			layer.open({ 
+				content: "没有更多了",
+				title: '温馨提示',
+				area: ['320px', '180px'],
+				success: function(layer) {
+					layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+				},
+			});
 		}
 		
     }
@@ -351,14 +383,16 @@ function GetWinnerInfor(){
 				for(var i in re){
 					if(re[i].IsUrgent == false){
 						allWi += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-						allWi += 	'<span class="index-text04">'+re[i].Name+'</span>'
-						allWi += 	'<span class="index-text05">'+re[i].Address+'</span>'
+						allWi +=		'<span class="index-text13">'+re[i].Name+'</span>'
+						allWi +=		'<span class="index-text14">'+re[i].Address+'</span>'
+						allWi +=		'<span class="index-text15">'+re[i].Distance+'</span>'
 						allWi += '</p>'
 					}
 					else{
 						allWi += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-						allWi += 	'<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
-						allWi += 	'<span class="index-text05">'+re[i].Address+'</span>'
+						allWi +=		'<span class="index-text13">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+						allWi +=		'<span class="index-text14">'+re[i].Address+'</span>'
+						allWi +=		'<span class="index-text15">'+re[i].Distance+'</span>'
 						allWi += '</p>'
 					}
 				}
@@ -395,14 +429,16 @@ function GetMore9(){
 						for(var i in re){
 							if(re[i].IsUrgent == false){
 								allWi += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-								allWi += 	'<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
-								allWi += 	'<span class="index-text05">'+re[i].Address+'</span>'
+								allWi +=		'<span class="index-text13">'+re[i].Name+'</span>'
+								allWi +=		'<span class="index-text14">'+re[i].Address+'</span>'
+								allWi +=		'<span class="index-text15">'+re[i].Distance+'</span>'
 								allWi += '</p>'
 							}
 							else{
 								allWi += '<p class="index-guesstext"id="'+re[i].ID+'" onclick="ShowWorkDe(this)">'
-								allWi += 	'<span class="index-text04">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
-								allWi += 	'<span class="index-text05">'+re[i].Address+'</span>'
+								allWi +=		'<span class="index-text13">'+re[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
+								allWi +=		'<span class="index-text14">'+re[i].Address+'</span>'
+								allWi +=		'<span class="index-text15">'+re[i].Distance+'</span>'
 								allWi += '</p>'
 							}
 						}
@@ -420,7 +456,14 @@ function GetMore9(){
 			});
 		}
 		else{
-			alert("没有更多了")
+			layer.open({ 
+				content: "没有更多了",
+				title: '温馨提示',
+				area: ['320px', '180px'],
+				success: function(layer) {
+					layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+				},
+			});
 		}
     }
 }

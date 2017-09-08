@@ -33,7 +33,7 @@ function getProvideList(){
 					allP += 		'<span class="index-text30">'+re[i].Name+'</span>'
 					allP += 		'<span class="index-text31">'+re[i].Company+'</span>'
 					allP += 		'<span class="index-text32">'+re[i].Address+'</span>'
-					allP += 		'<span class="index-text33">'+re[i].Salary+'</span>'
+					allP += 		'<span class="index-text33">'+re[i].Salary+'/月</span>'
 					allP += '</p>'
 				}
 				$("#allpr").html(allP);

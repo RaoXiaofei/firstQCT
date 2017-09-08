@@ -60,6 +60,7 @@ window.onload = function() {
 						infor += '<p class="index-guesstext" id="' + b.ID + '" onclick="ShowIndexDe(this)">'
 						infor += '<span class="index-text04">' + b.Name + '</span>'
 						infor += '<span class="index-text05">' + b.CompanyName + '</span>'
+						infor += '<span class="index-text11">' + b.Distance + '</span>'
 						infor += '<span class="index-text07">' + b.Salary + '</span>'
 						infor += '</p>';
 					}
@@ -67,11 +68,10 @@ window.onload = function() {
 						infor += '<p class="index-guesstext" id="' + b.ID + '" onclick="ShowIndexDe(this)">'
 						infor += '<span class="index-text04">' + b.Name + '<span class="index-text06" id="faster">[<img src="img/urgent.png" />加急]</span></span>'
 						infor += '<span class="index-text05">' + b.CompanyName + '</span>'
+						infor += '<span class="index-text11">' + b.Distance + '</span>'
 						infor += '<span class="index-text07">' + b.Salary + '</span>'
 						infor += '</p>';
 					}
-					
-					
 				}
 				$('#Guess-Infor').html(infor);
 				this.isNext = data.Result.IsNext
@@ -105,11 +105,22 @@ function GetMore() {
 						//猜你喜欢
 						for(var i = 0; i < data.Result.List.length; i++) {
 							var b = data.Result.List[i];
-							infor += '<p class="index-guesstext" id="' + b.ID + '" onclick="ShowIndexDe(this)">'
-							infor += '<span class="index-text04">' + b.Name + '</span>'
-							infor += '<span class="index-text05">' + b.CompanyName + '</span>'
-							infor += '<span class="index-text07">' + b.Salary + '</span>'
-							infor += '</p>';
+							if(b.IsUrgent == false){
+								infor += '<p class="index-guesstext" id="' + b.ID + '" onclick="ShowIndexDe(this)">'
+								infor += '<span class="index-text04">' + b.Name + '</span>'
+								infor += '<span class="index-text05">' + b.CompanyName + '</span>'
+								infor += '<span class="index-text11">' + b.Distance + '</span>'
+								infor += '<span class="index-text07">' + b.Salary + '</span>'
+								infor += '</p>';
+							}
+							else{
+								infor += '<p class="index-guesstext" id="' + b.ID + '" onclick="ShowIndexDe(this)">'
+								infor += '<span class="index-text04">' + b.Name + '<span class="index-text06" id="faster">[<img src="img/urgent.png" />加急]</span></span>'
+								infor += '<span class="index-text05">' + b.CompanyName + '</span>'
+								infor += '<span class="index-text11">' + b.Distance + '</span>'
+								infor += '<span class="index-text07">' + b.Salary + '</span>'
+								infor += '</p>';
+							}
 						}
 						$('#Guess-Infor').html(infor);
 
@@ -122,7 +133,7 @@ function GetMore() {
 				}.bind(this)
 			});
 		} else {
-			alert("没有更多了");
+			alert("没有更多了")
 		}
 	}
 }

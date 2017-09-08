@@ -35,11 +35,11 @@
 								</div>
 								<div class="modal-body" id="body-modal" style="padding-left: 35px;">
 									<p class="phone-text">手机号登录</p>
-									<!--<span class="phone-number">手机号</span><br />-->
+									<span class="phone-number">手机号</span><br />
 									<input type="text" class="form-control phone" id="phone" placeholder="手机号" onfocus="if(placeholder=='手机号')placeholder=''" onblur="if(!placeholder)placeholder='手机号'" />
 									<img src="assets/clear.jpg" id="qingkong" />
 									<input type="text" class="form-control code-frame" id="code-frame" placeholder="验证码" onfocus="if(placeholder=='验证码')placeholder=''" onblur="if(!placeholder)placeholder='验证码'">
-									<button type="button" class="btn btn-default get-code" id="get-code" style="width: 90px;font-size: 10px;"><span class="get-codetext">获取验证码</span></button>
+									<button type="button" class="get-code" id="get-code" style="width: 90px;font-size: 10px;"><span class="get-codetext">获取验证码</span></button>
 									<br />
 									<button type="button" class=" login-button" id="login-button" onclick="login()"><span class="login-buttontext">登录</span></button>
 								</div>
@@ -145,13 +145,13 @@
 			<!--实名认证-->
 			<div id="identify-information" class="information-right1">
 				<!--主标题：实名认证-->
-				<div class="container" style="min-width: 855px;">
+				<div style="min-width: 855px;">
 					<div class="row" id="guess">
 						<div class="col-md-2" id="line"><span class="index-text03">实名认证</span></div>
 						<div class="col-md-10"></div>
 					</div>
 				</div>
-				<div class="" >
+				<div >
 					<ul class="issue-top">
 						<li class="issuetop-text01">姓名：</li>
 						<li id="IdentName">
@@ -175,14 +175,14 @@
 			<!--简历信息-->
 			<div id="resume-information" class="information-right1">
 				<!--主标题：简历信息-->
-				<div class="">
+				<div>
 					<div class="row" id="guess">
 						<div class="col-md-2" id="line"><span class="index-text03">简历信息</span></div>
 						<div class="col-md-10"></div>
 					</div>
 				</div>
 				<!--详细简历信息-->
-				<div class="">
+				<div>
 					<ul class="issue-top">
 						<li class="issuetop-text01">姓名：</li>
 						<li id="resName">
@@ -233,10 +233,12 @@
 						<li class="issuetop-text01">工作经验：</li>
 						<li>
 							<select class="form-control workexp" id="resume-expe">
-								<option>1-2年</option>
-								<option>2-3年</option>
-								<option>3-5年</option>
-								<option>无工作经验</option>
+								<option><span class="issuetop-text03">不限</span></option>
+								<option><span class="issuetop-text03">1年以下</span></option>
+								<option><span class="issuetop-text03">1-3年</span></option>
+								<option><span class="issuetop-text03">3-5年</span></option>
+								<option><span class="issuetop-text03">5-10年</span></option>
+								<option><span class="issuetop-text03">10年以上</span></option>
 							</select>
 						</li>
 					</ul>
@@ -256,9 +258,7 @@
 						<li class="issuetop-text01">最高学历：</li>
 						<li>
 							<select class="form-control" id="resume-quali">
-								<option>初中</option>
-								<option>高中</option>
-								<option>大专</option>
+								<option>大专及以下</option>
 								<option>本科</option>
 								<option>硕士</option>
 								<option>博士</option>

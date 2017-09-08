@@ -147,6 +147,7 @@ function GetAllPosition(){
 						AllPo += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
 						AllPo += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
 						AllPo += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+						AllPo += '<span class="index-text12">'+data.Result.List[i].Distance+'</span>'
 						AllPo += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
 						AllPo += '</p>'
 					}
@@ -154,6 +155,7 @@ function GetAllPosition(){
 						AllPo += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
 						AllPo += '<span class="index-text04">'+data.Result.List[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
 						AllPo += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+						AllPo += '<span class="index-text12">'+data.Result.List[i].CompanyName+'</span>'
 						AllPo += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
 						AllPo += '</p>'
 					}
@@ -199,6 +201,7 @@ function GetMore1(){
 								AllPo += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
 								AllPo += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
 								AllPo += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+								AllPo += '<span class="index-text12">'+data.Result.List[i].Distance+'</span>'
 								AllPo += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
 								AllPo += '</p>'
 							}
@@ -206,6 +209,7 @@ function GetMore1(){
 								AllPo += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
 								AllPo += '<span class="index-text04">'+data.Result.List[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
 								AllPo += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+								AllPo += '<span class="index-text12">'+data.Result.List[i].CompanyName+'</span>'
 								AllPo += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
 								AllPo += '</p>'
 							}
@@ -223,7 +227,14 @@ function GetMore1(){
 			});
 		}
     	else{
-			alert("没有更多了")
+			layer.open({ 
+				content: "没有更多了",
+				title: '温馨提示',
+				area: ['320px', '180px'],
+				success: function(layer) {
+					layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+				},
+			});
 		}
 	}
 }
@@ -252,6 +263,7 @@ function GetAllPosition1(){
 						Allo += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
 						Allo += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
 						Allo += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+						Allo += '<span class="index-text12">'+data.Result.List[i].CompanyName+'</span>'
 						Allo += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
 						Allo += '</p>'
 					}
@@ -259,6 +271,7 @@ function GetAllPosition1(){
 						Allo += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
 						Allo += '<span class="index-text04">'+data.Result.List[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
 						Allo += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+						Allo += '<span class="index-text12">'+data.Result.List[i].CompanyName+'</span>'
 						Allo += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
 						Allo += '</p>'
 					}

@@ -22,7 +22,7 @@ $.ajax({
 	url:urlf+"api/Company/ProvideDetail?id="+listID,
 	async:true,
 	success:function(data){
-		console.log(data.Result);
+//		console.log(data.Result);
 		var re = data.Result;
 		
 		pro += '<span class="work-line" style="float: right;cursor: pointer;"onclick="Report()">'
@@ -30,21 +30,24 @@ $.ajax({
 		pro += 		'<span class="work-text01">&nbsp;举报</span>'
 		pro += '</span>'
 		pro += '<br />'
-		pro += '<span class="work-line">'
+		pro += '<span class="work-line" style="margin-bottom:17px;">'
 		pro += 		'<span class="work-text02">'+re.WorkType+'</span><span class="work-text03">'+re.Count+'人</span>'
 		pro += '</span>'
 		pro += '<br />'
-		pro +='<span class="work-line">'
+		pro +='<span class="work-line" >'
 		pro +=	'<img src="assets/坐标.png"class="img" />'
 		pro +=	'<span class="work-text05">'+re.Address+'</span>'
 		if(re.IsUrgent == true){
+			var hour = Math.floor(re.CountDown/3600);
+			var minute = Math.floor((re.CountDown-hour*3600)/60);
+			var second = Math.floor(re.CountDown-hour*3600-minute*60);
 			pro +=	'<img src="img/jiaji.png" class="img"/>'
 			pro +=	' <span class="work-text005">加急</span>'
 			pro += '</span>'
 			pro +=	'<br />'
 			pro +=	'<span class="work-line jiaji">'
 			pro +=		'<img src="img/daojishi.png" class="imgggg"/>'
-			pro +=		'<span class="CountDown">距结束00：00：40</span>'
+			pro +=		'<span class="CountDown">距结束&nbsp;'+hour+'：'+minute+'：'+second+'</span>'
 		}
 		pro +=	'</span>'
 		pro += '<br />'
@@ -72,6 +75,7 @@ $.ajax({
 });
 
 function Report(){
+	
 	$.ajax({
 		type:"get",
 		url:urlf+"api/Report/UserReport?id="+listID+"&type=4",
@@ -79,12 +83,36 @@ function Report(){
 		beforeSend: function(xhr) {
 	        xhr.setRequestHeader("Authorization",getCookie('token'));
 	    },
+	    error:function(){
+	    	layer.open({
+				content: "请先登录",
+				title: '温馨提示',
+				area: ['320px', '180px'],
+				success: function(layer) {
+					layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+				},
+			});
+	    },
 		success:function(data){
 			if(data.Status == 1){
-				alert(data.Result);
+				layer.open({
+					content: data.Result,
+					title: '温馨提示',
+					area: ['320px', '180px'],
+					success: function(layer) {
+						layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+					},
+				});
 			}
 			else{
-				alert(data.Status);
+				layer.open({
+					content: data.Result,
+					title: '温馨提示',
+					area: ['320px', '180px'],
+					success: function(layer) {
+						layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+					},
+				});
 			}
 		}
 	});

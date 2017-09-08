@@ -535,7 +535,6 @@ $("#SaveResume").click(function() {
 				$('#resume-job1').attr("disabled", "disabled");
 				$('#resume-job2').attr("disabled", "disabled");
 				$('#resume-expe').attr("disabled", "disabled");
-				window.location.reload();
 			} else {
 				layer.open({
 					content: data.Result,

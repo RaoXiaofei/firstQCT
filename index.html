@@ -33,13 +33,13 @@
 				            	</div>
 				            	<div class="modal-body" id="body-modal" style="padding-left: 35px;">
 					            	<p class="phone-text">手机号登录</p>
-					                <!--<span class="phone-number">手机号</span><br />-->
+					                <span class="phone-number">手机号</span><br />
 					            	<input type="text" class="form-control phone" id="phone" placeholder="手机号"
 		  								onfocus="if(placeholder=='手机号')placeholder=''" onblur="if(!placeholder)placeholder='手机号'"/>
 				                	<img src="assets/clear.jpg" id="qingkong"/>
 		  							<input type="text" class="form-control code-frame" id="code-frame" placeholder="验证码"
 		  								onfocus="if(placeholder=='验证码')placeholder=''" onblur="if(!placeholder)placeholder='验证码'">
-		  							<button type="button" class="btn btn-default getCode" id="get-code" style="width: 90px;font-size: 24px;"><span class="get-codetext">获取验证码</span></button>
+		  							<button type="button" class="getCode" id="get-code" style="width: 90px;font-size: 24px;"><span class="get-codetext">获取验证码</span></button>
 		  							<br />
 		  							<button type="button" class="login-button" id="login-button" onclick="login()"><span class="login-buttontext">登录</span></button>						
 				           		</div>      
@@ -165,28 +165,51 @@
 			</div>
 		</div>
 		
-		<div class="row col-xs-12 col-md-12" style="background-color: #FFFFFF;">
-			<div class="row col-xs-12 col-md-12" id="sousuo" style="margin-top: 30px;">
-				<input type="text" placeholder="请输入搜索" id="index-keywords"/>
-				<button type="button" style="margin-left: -87px;" onclick="SearchAllposition(this)">搜索</button>
-				<button type="button" onclick="Issue()">一键发布</button>
+		<div class="row">
+			<div class="col-xs-12 col-md-9" style="background-color: #FFFFFF;">
+				<div id="sousuo" style="margin-top: 30px;">
+					<input type="text" placeholder="请输入搜索" id="index-keywords"/>
+					<button type="button" style="margin-left: -87px;" onclick="SearchAllposition(this)">搜索</button>
+					<button type="button" onclick="Issue()">一键发布</button>
+				</div>
+				
+				<div id="guess">
+					<div id="line"><span class="index-text03">猜你喜欢</span></div>
+				</div>
+				
+				<div  id="Guess-Infor">
+					<p class="index-guesstext" id="index-infor01" onclick="ShowIndexDe(this)">
+						<!--<span class="index-text04">专业的销售代表<span class="index-text06" id="faster">[<img src="img/urgent.png" />加急]</span></span>
+						<span class="index-text05">宁波轩马信息科技有限公司</span>
+						<span class="index-text07">2000/月</span>-->
+					</p>
+				</div>
+				
+				<div id="getMo"  onclick="GetMore()" >
+					<span class="glyphicon glyphicon-chevron-down" id="getMore" aria-hidden="true"></span>
+					<span class="moreText">点击加载更多</span>
+				</div>
 			</div>
 			
-			<div class="row col-xs-12" id="guess">
-				<div class="col-md-2" id="line"><span class="index-text03">猜你喜欢</span></div>
-			</div>
-			
-			<div class="row col-xs-12 col-md-12" id="Guess-Infor">
-				<p class="index-guesstext" id="index-infor01" onclick="ShowIndexDe(this)">
-					<!--<span class="index-text04">专业的销售代表<span class="index-text06" id="faster">[<img src="img/urgent.png" />加急]</span></span>
-					<span class="index-text05">宁波轩马信息科技有限公司</span>
-					<span class="index-text07">2000/月</span>-->
-				</p>
-			</div>
-			
-			<div class="row col-xs-4 col-md-2" id="getMo"  onclick="GetMore()" style="margin-bottom: 50px;">
-				<span class="glyphicon glyphicon-chevron-down" id="getMore" aria-hidden="true"></span>
-				<span class="moreText">点击加载更多</span>
+			<div class="div-guess-right">
+				<div class="guess-right">
+					<div>
+						<img  src="img/右侧.jpg"/>
+					</div>
+					<div>
+						<h4>专业销售代表</h4>
+						<h5>2000/月</h5>
+					</div>
+				</div>
+				<div class="guess-right">
+					<div>
+						<img  src="img/右侧.jpg"/>
+					</div>
+					<div>
+						<h4>专业销售代表</h4>
+						<h5>2000/月</h5>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

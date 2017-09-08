@@ -50,26 +50,73 @@ ul{
 	padding-left: 15px;
 	display:-moz-inline-box;
 	display:inline-block;
-	width: 42%;
+	width: 29%;
 	font-family:"微软雅黑";
-	font-size: 18px;
+	font-size: 16px;
 	color: #3DA8F5;
 	margin-right: 30px;
 }
 .index-text05{	
 	display:-moz-inline-box;
 	display:inline-block;
-	width: 35%;
+	width: 30%;
 	font-family:"微软雅黑";
 	font-size: 14px;
 	color: #4A4A4A;
 	margin-right: 30px;
 }
+.index-text11{
+	display:-moz-inline-box;
+	display:inline-block;
+	width: 15%;
+	font-family:"微软雅黑";
+	font-size: 14px;
+	color: #4A4A4A;
+	margin-right: 30px;
+}
+.index-text12{
+	display:-moz-inline-box;
+	display:inline-block;
+	width: 22%;
+	font-family:"微软雅黑";
+	font-size: 14px;
+	color: #4A4A4A;
+	margin-right: 30px;
+}
+
+.index-text13{
+	padding-left: 15px;
+	display:-moz-inline-box;
+	display:inline-block;
+	width: 41%;
+	font-family:"微软雅黑";
+	font-size: 16px;
+	color: #3DA8F5;
+	margin-right: 30px;
+}
+.index-text14{
+	display:-moz-inline-box;
+	display:inline-block;
+	width: 36%;
+	font-family:"微软雅黑";
+	font-size: 14px;
+	color: #4A4A4A;
+	margin-right: 30px;
+}
+.index-text14{
+	display:-moz-inline-box;
+	display:inline-block;
+	font-family:"微软雅黑";
+	font-size: 14px;
+	color: #4A4A4A;
+	margin-right: 30px;
+}
+
 .index-text06{
 	display: -moz-inline-box;
     display: inline-block;
     font-family: "微软雅黑";
-    font-size: 16px;
+    font-size: 14px;
     color: #479b2c;
     margin-right: 30px;
     letter-spacing: 2px;
@@ -123,10 +170,12 @@ ul{
 	color: #FF6146;
 }
 #getMo{
-	left: 44%;
+	left: 43%;
 	margin-top: 10px;
 	position: relative;
 	cursor: pointer;
+	margin-bottom: 50px;
+	width: 200px;
 }
 .moreText{
 	display: inline-block;
@@ -137,48 +186,12 @@ ul{
 .getCode{
 	position: absolute;
     left: 241px;
-    top: 123px;
-    border-color: #FF6146;
+    top: 160px;
     border-radius: 6px;
     background-color: #FFFFFF;
+    border: 1px solid #FF6146;
+    height: 30px;
 }
-
-#container2 .index-text20{
-	padding-left: 15px;
-	display:-moz-inline-box;
-	display:inline-block;
-	width: 25%;
-	font-family:"微软雅黑";
-	font-size: 18px;
-	color: #3DA8F5;
-	margin-right: 20px;
-}
-#container2 .index-text21{	
-	display:-moz-inline-box;
-	display:inline-block;
-	width: 25%;
-	font-family:"微软雅黑";
-	font-size: 14px;
-	color: #4A4A4A;
-	margin-right: 20px;
-}
-#container2 .index-text22{
-	display:-moz-inline-box;
-	display:inline-block;
-	width: 25%;
-	font-family:"微软雅黑";
-	font-size: 14px;
-	color: #4A4A4A;
-	margin-right: 20px;
-}
-#container2 .index-text23{	
-	display:-moz-inline-box;
-	display:inline-block;
-	font-family:"微软雅黑";
-	font-size: 18px;
-	color: #FD4545;
-}
-
 
 #container2 .index-text30{
 	padding-left: 15px;
@@ -230,7 +243,7 @@ ul{
 #container2 .index-text41{	
 	display:-moz-inline-box;
 	display:inline-block;
-	width: 37%;
+	width: 45%;
 	font-family:"微软雅黑";
 	font-size: 14px;
 	color: #4A4A4A;
@@ -362,4 +375,29 @@ div#sousuo button{
 	font-size: 12px;
 	width: 130px;
 	text-align: left;
+}
+
+.div-guess-right{
+	float: right;
+}
+.guess-right{
+	background-color: #FFFFFF;
+	margin-bottom: 20px;
+}
+.guess-right img{
+	width: 210px;
+	height: 250px;
+}
+.guess-right h4{
+	font-family: "微软雅黑";
+	font-size: 16px;
+	color: #4A4A4A;
+	text-align: center;
+}
+.guess-right h5{
+	font-size: 16px;
+	letter-spacing: 1px;
+	color: #FD4545;
+	text-align: center;
+    padding-bottom: 9px;
 }

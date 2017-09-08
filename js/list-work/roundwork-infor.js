@@ -44,6 +44,7 @@ function GetRoundWork(){
 						AllRoun += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
 						AllRoun += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
 						AllRoun += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+						AllRoun += '<span class="index-text12">'+data.Result.List[i].Distance+'</span>'
 						AllRoun += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
 						AllRoun += '</p>'
 					}
@@ -51,10 +52,10 @@ function GetRoundWork(){
 						AllRoun += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
 						AllRoun += '<span class="index-text04">'+data.Result.List[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
 						AllRoun += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+						AllRoun += '<span class="index-text12">'+data.Result.List[i].Distance+'</span>'
 						AllRoun += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
 						AllRoun += '</p>'
 					}
-					
 				}
 						
 				$("#allArou").html(AllRoun);
@@ -99,6 +100,7 @@ function GetMore2(){
 								AllRoun += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
 								AllRoun += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
 								AllRoun += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+								AllRoun += '<span class="index-text12">'+data.Result.List[i].Distance+'</span>'
 								AllRoun += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
 								AllRoun += '</p>'
 							}
@@ -106,6 +108,7 @@ function GetMore2(){
 								AllRoun += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
 								AllRoun += '<span class="index-text04">'+data.Result.List[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
 								AllRoun += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+								AllRoun += '<span class="index-text12">'+data.Result.List[i].Distance+'</span>'
 								AllRoun += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
 								AllRoun += '</p>'
 							}
@@ -123,7 +126,14 @@ function GetMore2(){
 			});
 		}
 		else{
-			alert("没有更多了")
+			layer.open({ 
+				content: "没有更多了",
+				title: '温馨提示',
+				area: ['320px', '180px'],
+				success: function(layer) {
+					layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+				},
+			});
 		}
     }
 }
@@ -221,6 +231,7 @@ function GetRoundWork1(){
 						all += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
 						all += '<span class="index-text04">'+data.Result.List[i].Name+'</span>'
 						all += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+						all += '<span class="index-text12">'+data.Result.List[i].Distance+'</span>'
 						all += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
 						all += '</p>'
 					}
@@ -228,11 +239,11 @@ function GetRoundWork1(){
 						all += '<p class="index-guesstext" id="'+data.Result.List[i].ID+'" onclick="ShowIndexDe(this)">'
 						all += '<span class="index-text04">'+data.Result.List[i].Name+'<span class="index-text06">[<img src="img/urgent.png" />加急]</span></span>'
 						all += '<span class="index-text05">'+data.Result.List[i].CompanyName+'</span>'
+						all += '<span class="index-text12">'+data.Result.List[i].Distance+'</span>'
 						all += '<span class="index-text07">'+data.Result.List[i].Salary+'</span>'
 						all += '</p>'
 					}
 				}
-						
 				$("#allArou").html(all);
 				this.isNext = data.Result.IsNext
 				this.pageIndexR ++
@@ -260,10 +271,22 @@ $(".roundwork_salary").each(function(){
 })
 function KeySearch(){
 	var keyw = $("#keywords").val();
-	this.keyWord = keyw;
-	this.pageIndexR = 1;
-	this.pageIndex = 1;
-	this.pageSize = 1000;
-	GetRoundWork1();
-	GetAllPosition1();
+	if(keyw == ""){
+		layer.open({
+			content: "请输入关键字",
+			title: '温馨提示',
+			area: ['320px', '180px'],
+			success: function(layer) {
+				layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+			},
+		});
+	}
+	else{
+		this.keyWord = keyw;
+		this.pageIndexR = 1;
+		this.pageIndex = 1;
+		this.pageSize = 1000;
+		GetRoundWork1();
+		GetAllPosition1();
+	}
 }

@@ -44,10 +44,10 @@ function GetAllResume(){
 
 				for(var i in data.Result.List){
 					allR += '<p class="index-guesstext" id="'+re[i].ID+'" onclick="ShowResumeDe(this)">'
-					allR +=		'<span class="index-text20">'+re[i].Name+'</span>'
-					allR +=		'<span class="index-text21">'+re[i].PositionName+'</span>'
-					allR +=		'<span class="index-text22">'+re[i].Qualifications+'</span>'
-					allR +=		'<span class="index-text23">'+re[i].SalaryExpectation+'</span>'
+					allR +=		'<span class="index-text04">'+re[i].Name+'</span>'
+					allR +=		'<span class="index-text05">'+re[i].PositionName+'</span>'
+					allR +=		'<span class="index-text12">'+re[i].Qualifications+'</span>'
+					allR +=		'<span class="index-text07">'+re[i].SalaryExpectation+'</span>'
 					allR +=	'</p>'
 				}
 				
@@ -85,10 +85,10 @@ function GetMore3(){
 		
 						for(var i in data.Result.List){
 							allR += '<p class="index-guesstext" id="'+re[i].ID+'" onclick="ShowResumeDe(this)">'
-							allR +=		'<span class="index-text20">'+re[i].Name+'</span>'
-							allR +=		'<span class="index-text21">'+re[i].PositionName+'</span>'
-							allR +=		'<span class="index-text22">'+re[i].Qualifications+'</span>'
-							allR +=		'<span class="index-text23">'+re[i].SalaryExpectation+'</span>'
+							allR +=		'<span class="index-text04">'+re[i].Name+'</span>'
+							allR +=		'<span class="index-text05">'+re[i].PositionName+'</span>'
+							allR +=		'<span class="index-text12">'+re[i].Qualifications+'</span>'
+							allR +=		'<span class="index-text07">'+re[i].SalaryExpectation+'</span>'
 							allR +=	'</p>'
 						}
 						
@@ -102,7 +102,14 @@ function GetMore3(){
 				});
 			}
 		else{
-			alert("没有更多了")
+			layer.open({ 
+				content: "没有更多了",
+				title: '温馨提示',
+				area: ['320px', '180px'],
+				success: function(layer) {
+					layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+				},
+			});
 		}
     }
 }
@@ -201,10 +208,10 @@ function GetAllResume1(){
 
 				for(var i in data.Result.List){
 					all += '<p class="index-guesstext" id="'+re[i].ID+'" onclick="ShowResumeDe(this)">'
-					all +=		'<span class="index-text20">'+re[i].Name+'</span>'
-					all +=		'<span class="index-text21">'+re[i].PositionName+'</span>'
-					all +=		'<span class="index-text22">'+re[i].Qualifications+'</span>'
-					all +=		'<span class="index-text23">'+re[i].SalaryExpectation+'</span>'
+					all +=		'<span class="index-text04">'+re[i].Name+'</span>'
+					all +=		'<span class="index-text05">'+re[i].PositionName+'</span>'
+					all +=		'<span class="index-text12">'+re[i].Qualifications+'</span>'
+					all +=		'<span class="index-text07">'+re[i].SalaryExpectation+'</span>'
 					all +=	'</p>'
 				}
 				

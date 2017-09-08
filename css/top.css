@@ -127,6 +127,7 @@
 	font-family: "微软雅黑";
 	font-size: 18px;
 	color: #4A4A4A;
+	margin-bottom: 20px;
 }
 .phone-number{
 	font-family: "微软雅黑";
@@ -150,13 +151,13 @@
 	letter-spacing: 0.5px;
 }
 .get-code{	
-	font-size: 24px;
 	position: absolute;
-	left: 241px;
-    top: 123px;
-    border-color: #FF6146;
+    left: 241px;
+    top: 163px;
     border-radius: 6px;
     background-color: #FFFFFF;
+    border: 1px solid #FF6146;
+    height: 30px;
 }
 .login-button{
 	width: 300px;
@@ -185,7 +186,7 @@
     height: 20px;
     position: absolute;
     left: 306px;
-    top: 56px;	
+    top: 92px;	
 }
 #drMenu{
 	width: 185px;

@@ -79,6 +79,7 @@ $.ajax({
 	}
 	
 });
+
 //举报
 function ReportThis(){
 	$.ajax({
@@ -88,12 +89,36 @@ function ReportThis(){
 		beforeSend: function(xhr) {
 			xhr.setRequestHeader("Authorization",getCookie('token'));
 		},	
+		error:function(){
+			layer.open({
+				content: "请先登录",
+				title: '温馨提示',
+				area: ['320px', '180px'],
+				success: function(layer) {
+					layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+				},
+			});
+		},
 		success:function(data){
 			if(data.Status == 1){
-				alert(data.Result);
+				layer.open({
+					content: data.Result,
+					title: '温馨提示',
+					area: ['320px', '180px'],
+					success: function(layer) {
+						layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+					},
+				});
 			}
 			else{
-				alert(data.Status);
+				layer.open({
+					content: data.Result,
+					title: '温馨提示',
+					area: ['320px', '180px'],
+					success: function(layer) {
+						layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+					},
+				});
 			}
 		}
 	});

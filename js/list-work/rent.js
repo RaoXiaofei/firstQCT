@@ -35,8 +35,9 @@ function GetRoundRentInfor(){
 				for(var i in re){
 //					if(re[i].IsUrgent == false){
 						allRe += '<p class="index-guesstext" id="'+re[i].ID+'" onclick="ShowRentDe(this)">'
-						allRe +=	 '<span class="index-text04">'+re[i].Name+'</span>'
-						allRe +=	 '<span class="index-text05">'+re[i].Address+'</span>'
+						allRe +=	 '<span class="index-text13">'+re[i].Name+'</span>'
+						allRe +=	 '<span class="index-text14">'+re[i].Address+'</span>'
+						allRe +=	 '<span class="index-text15">'+re[i].Distance+'</span>'
 						allRe += '</p>'
 //					}
 //					else{
@@ -80,10 +81,11 @@ function GetMore10(){
 						var re = data.Result.List;
 						for(var i in re){
 //							if(re[i].IsUrgent == false){
-								allRe += '<p class="index-guesstext" id="'+re[i].ID+'" onclick="ShowRentDe(this)">'
-								allRe +=	 '<span class="index-text04">'+re[i].Name+'</span>'
-								allRe +=	 '<span class="index-text05">'+re[i].Address+'</span>'
-								allRe += '</p>'
+							allRe += '<p class="index-guesstext" id="'+re[i].ID+'" onclick="ShowRentDe(this)">'
+							allRe +=	 '<span class="index-text13">'+re[i].Name+'</span>'
+							allRe +=	 '<span class="index-text14">'+re[i].Address+'</span>'
+							allRe +=	 '<span class="index-text15">'+re[i].Distance+'</span>'
+							allRe += '</p>'
 //							}
 //							else{
 //								allRe += '<p class="index-guesstext" id="'+re[i].ID+'" onclick="ShowRentDe(this)">'
@@ -105,7 +107,14 @@ function GetMore10(){
 			});
 		}
 		else{
-			alert("没有更多了");
+			layer.open({ 
+				content: "没有更多了",
+				title: '温馨提示',
+				area: ['320px', '180px'],
+				success: function(layer) {
+					layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
+				},
+			});
 		}
     }
 }

@@ -1,12 +1,12 @@
 var busID = ''
-var busCardImg = ''
+var busImageID = ''
 /*
  * 获取全国大巴信息
  */
 var Token = getCookie("token");
 function getBusInfor(){
 	var allB = '';
-	
+	busImageID = "";
 	$.ajax({
 		type:"get",
 		url:urlf+"api/Release/MyRelease?pageIndex=1&pageSize=10000&type=5",
@@ -48,7 +48,6 @@ function getBusInfor(){
  * 显示  修改  删除  全国大巴详细信息
  */
 function ShowBusInfor(inforID){
-	busCardImg = '';
 	busID = inforID.id;
 	$("#PCR01").replaceWith('<form class="form-inline"  id="PCR01"><div id="distpicker-bus-infor'+busID+'"><div class="form-group"><label class="sr-only" for="province6">Province</label><select class="select-frame02" id="buscmbProvince"></select></div><div class="form-group"><label class="sr-only" for="city6">City</label><select class="select-frame02" id="buscmbCity"></select></div><div class="form-group"><label class="sr-only" for="district6">District</label><select class="select-frame02" id="buscmbArea"></select></div></div></form>')
 	$("#modify-bus-button").show();
@@ -76,20 +75,16 @@ function ShowBusInfor(inforID){
 					district: re.Region ,
 				})
    			 	$("#updateCardImga").attr("src", re.Image);
-   			 	busCardImg = re.Image;
+   			 	busImageID = re.Image;
+   			 	
    			 	$('input').attr("readonly", true);
    			 	$("#buscmbProvince").attr("disabled",true);
 	    		$("#buscmbCity").attr("disabled",true);
 	    		$("#buscmbArea").attr("disabled",true);
-	    		pro+= '<input type="text" class="input-text02" id="busProvince" value="'+re.Province+'" readonly="readonly"/>'
-				pro+= '<input type="text" class="input-text02" id="busCity" value="'+re.City+'" readonly="readonly"/>'
-				pro+= '<input type="text" class="input-text02" id="busArea" value="'+re.Region+'" readonly="readonly"/>'
 	    		
 	    		$("#driver-name").val(re.DriverName);
 	    		$("#car-address").val(re.Address);
 	    		$("#car-number").val(re.LicensePlate);
-	    		
-	    		$("#showPCR8").html(pro);
 	    	}
 	    }
 	});
@@ -112,7 +107,7 @@ $("#modify-bus-button").click(function(){
  * 修改全国大巴信息
  */
 $("#SaveBus").click(function(){
-	var busImgID = busCardImg;
+	var busiiimage = busImageID;
 	var Name = $("#driver-name").val();
 	var Plate = $("#car-number").val();
 	var Province = $("#buscmbProvince").val();
@@ -122,13 +117,14 @@ $("#SaveBus").click(function(){
 	var Image1 = img_value;
 	var Image = '';
 	if(Image1 == ""){
-		Image = busImgID;
-		busCardImg = '';
+		var busimg = busiiimage.split("http://api.quanqiuyingcai.com")[1];
+		Image = busimg;
 	}
 	else{
 		Image = Image1;
 	}
 	var id = busID;
+	
 	$.ajax({
 		type:"post",
 		url:urlf+"api/Release/PCUpdateBus",
@@ -155,7 +151,7 @@ $("#SaveBus").click(function(){
 				$("#buscmbProvince").attr("disabled",true);
 	    		$("#buscmbCity").attr("disabled",true);
 	    		$("#buscmbArea").attr("disabled",true);
-	    		busCardImg = '';
+	    		busImageID = '';
 			}
 			else{
 				alert(data.Result);

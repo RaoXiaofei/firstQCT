@@ -32,11 +32,11 @@
 								</div>
 								<div class="modal-body" id="body-modal" style="padding-left: 35px;">
 									<p class="phone-text">手机号登录</p>
-									<!--<span class="phone-number">手机号</span><br />-->
+									<span class="phone-number">手机号</span><br />
 									<input type="text" class="form-control phone" id="phone" placeholder="手机号" onfocus="if(placeholder=='手机号')placeholder=''" onblur="if(!placeholder)placeholder='手机号'" />
 									<img src="assets/clear.jpg" id="qingkong" />
 									<input type="text" class="form-control code-frame" id="code-frame" placeholder="验证码" onfocus="if(placeholder=='验证码')placeholder=''" onblur="if(!placeholder)placeholder='验证码'">
-									<button type="button" class="btn btn-default get-code" id="get-code" style="width: 90px;font-size: 10px;"><span class="get-codetext">获取验证码</span></button>
+									<button type="button" class="get-code" id="get-code" style="width: 90px;font-size: 10px;"><span class="get-codetext">获取验证码</span></button>
 									<br />
 									<button type="button" class="login-button" id="login-button" onclick="login()"><span class="login-buttontext">登录</span></button>
 								</div>
@@ -180,10 +180,12 @@
 					<li class="issuetop-text01">工作经验：</li>
 					<li>
 						<select class="form-control" id="resume-select01">
-							<option><span class="issuetop-text03">1-2年</span></option>
-							<option><span class="issuetop-text03">2-3年</span></option>
+							<option><span class="issuetop-text03">不限</span></option>
+							<option><span class="issuetop-text03">1年以下</span></option>
+							<option><span class="issuetop-text03">1-3年</span></option>
 							<option><span class="issuetop-text03">3-5年</span></option>
-							<option><span class="issuetop-text03">无工作经验</span></option>
+							<option><span class="issuetop-text03">5-10年</span></option>
+							<option><span class="issuetop-text03">10年以上</span></option>
 						</select>
 					</li>
 				</ul>

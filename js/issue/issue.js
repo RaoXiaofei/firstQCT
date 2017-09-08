@@ -50,13 +50,13 @@ $(document).ready(function(){
 				for(var i = 0; i < data.Result.length; i++){
 					var re = data.Result;
 					position += '<option><span class="issuetop-text03">'+re[i].ClassName+'</span></option>';
-					for(var j in re[i].PositionList){
-						deposition += '<option value="'+ re[0].PositionList[j].ID+'"><span class="issuetop-text03">'+re[0].PositionList[j].Name+'</span></option>';
-					}
+//					for(var j in re[i].PositionList){
+//						deposition += '<option value="'+ re[0].PositionList[j].ID+'"><span class="issuetop-text03">'+re[0].PositionList[j].Name+'</span></option>';
+//					}
 				}
 				
 				$(".recruit-select01").html(position);
-				$(".recruit-select02").html(deposition);
+//				$(".recruit-select02").html(deposition);
 			}
 		else{
 				alert(data.Status);

@@ -25,7 +25,7 @@ $.ajax({
 	
 	success:function(data){
 		if(data.Status == 1){
-//			console.log(data.Result);
+			console.log(data.Result);
 			var re = data.Result;
 			/*
 			 * 公司介绍图片详情
@@ -52,13 +52,17 @@ $.ajax({
 			work+= '<div class="work-line01">'
 			work+= 	'<img src="assets/坐标.png" class="img"/>'
 			work+= 	'<span class="work-text05">'+re.Address+'</span>'
+			
+			var hour = Math.floor(re.CountDown/3600);
+			var minute = Math.floor((re.CountDown-hour*3600)/60);
+			var second = Math.floor(re.CountDown-hour*3600-minute*60);
 			if(re.IsUrgent == true){
 				work+= 	  '<img src="img/jiaji.png" class="img"/>'
 				work+= 	  '<span class="work-text005">加急</span>'
 				work+= '</div>'
 				work+= '<div class="work-line01 jiaji">'
 				work+= 	   '<img src="img/daojishi.png" class="imgggg"/>'
-				work+= 	   '<span class="CountDown">距结束00：00：40</span>'
+				work+= 	   '<span class="CountDown">距结束&nbsp;'+hour+'：'+minute+'：'+second+'</span>'
 			}
 			work+= '</div>'
 			work+= '<div class="work-line02">'

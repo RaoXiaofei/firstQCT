@@ -11,7 +11,7 @@
 .information-right2,.information-right1{
 	width: 75%;
 	min-width: 850px;
-	float: left;
+	float: right;
 	margin-top: 20px;
 	background-color: #FFFFFF;
 	margin-left: 30px;
@@ -48,7 +48,7 @@
 ul#infor-menu, ul#infor-menu ul {
   list-style-type:none;
   padding: 0;
-  width: 200px;
+  width: 220px;
 }
 ul#infor-menu a {
   display: block;
