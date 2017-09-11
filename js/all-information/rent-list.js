@@ -36,8 +36,8 @@ function getRentList(){
 			if(data.Status == 1){
 				for(var i in re){
 					allRen += '<p class="index-guesstext" id="'+re[i].ID+'" onclick="ShowRentInfor(this)">'
-					allRen +=		'<span class="index-text04">'+re[i].Name+'</span>'
-					allRen +=		'<span class="index-text05">'+re[i].Address+'</span>'
+					allRen +=		'<span class="index-text25">'+re[i].Name+'</span>'
+					allRen +=		'<span class="index-text26">'+re[i].Address+'</span>'
 					allRen += '</p>'
 				}				
 				$("#rentList").html(allRen);

@@ -26,7 +26,7 @@ $(document).ready(function(){
 		async:true,
 		success:function(data){
 			if(data.Status == 1){
-	//			console.log(data.Result);
+				console.log(data.Result);
 				var re = data.Result;
 				
 				for(var i = 0; i < re.ImageList.length; i++){
@@ -45,10 +45,10 @@ $(document).ready(function(){
 					autoplay: 3000
 				});
 				
-				work+= '<div class="work-line01">'
+				work+= '<div class="work-line01" style="margin-top:90px;">'
 				work+= 		'<span class="work-text09">'+re.Name+'</span>'
 				work+= '</div>'
-				work+= '<div class="work-line01">'
+				work+= '<div class="work-line01 work-address">'
 				work+= 	'<img src="assets/坐标.png" class="img"/>'
 				work+= 	'<span class="work-text05">'+re.Address+'</span>'
 //				if(re.IsUrgent == true){
@@ -60,7 +60,7 @@ $(document).ready(function(){
 //					work+= 	   '<span class="CountDown">距结束00：00：40</span>'
 //				}
 				work+= '</div>'
-				work+= '<div class="work-line02">'
+				work+= '<div class="work-line02" style="margin-top:20px;">'
 				work += '<div class="btn-group" role="group">'
 				work +=	  '<button type="button" class="btn btn-default dropdown-toggle btn-danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">电话联系</button>'
 				work +=	  '<ul class="dropdown-menu">'

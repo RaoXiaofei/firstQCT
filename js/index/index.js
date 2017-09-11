@@ -49,7 +49,7 @@ window.onload = function() {
 					paginationClickable: true,
 					spaceBetween: 30,
 					loop: true,
-					autoplay: 3000
+					autoplay: 6000
 				});
 				
 //							console.log(data.Result);
@@ -160,14 +160,6 @@ function SearchAllposition(e){
 	var keyw = $("#index-keywords").val();
 	if(keyw == ""){
 		alert("请输入关键字搜索！")
-//		layer.open({
-//			content: "请输入关键字搜索",
-//			title: '温馨提示',
-//			area: ['320px', '180px'],
-//			success: function(layer) {
-//				layer[0].childNodes[3].childNodes[0].attributes[0].value = 'layui-layer-btn1';
-//			},
-//		});
 	}
 	else{
 		setCookie("indexKey", keyw);

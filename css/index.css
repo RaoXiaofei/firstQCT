@@ -83,7 +83,23 @@ ul{
 	color: #4A4A4A;
 	margin-right: 30px;
 }
-
+.index-text25{
+	padding-left: 15px;
+    display: -moz-inline-box;
+    display: inline-block;
+    width: 48%;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    color: #3DA8F5;
+    margin-right: 30px;
+}
+.index-text26{
+	display: inline-block;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    color: #4A4A4A;
+    margin-right: 30px;
+}
 .index-text13{
 	padding-left: 15px;
 	display:-moz-inline-box;
@@ -283,6 +299,22 @@ div.menu-table h5 img{
 	width: 80px;
 	height: 80px;
 	margin-right: 12px;
+	-webkit-background-size: 220px 220px;
+	-moz-background-size: 220px 220px;
+	background-size: 220px 220px;
+	-webkit-border-radius: 110px;
+	border-radius: 110px;
+	-webkit-transition: -webkit-transform 2s ease-out;
+	-moz-transition: -moz-transform 2s ease-out;
+	-o-transition: -o-transform 2s ease-out;
+	-ms-transition: -ms-transform 2s ease-out;
+}
+div.menu-table h5 img:hover{
+	-webkit-transform: rotateZ(360deg);
+	-moz-transform: rotateZ(360deg);
+	-o-transform: rotateZ(360deg);
+	-ms-transform: rotateZ(360deg);
+	transform: rotateZ(360deg);
 }
 .drText01{
 	font-family: "微软雅黑";

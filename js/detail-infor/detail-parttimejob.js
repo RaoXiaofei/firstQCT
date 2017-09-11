@@ -49,7 +49,7 @@ $.ajax({
 			work+= '<div class="work-line01 workname">'
 			work+= 		'<span class="work-text09">'+re.Name+'</span>'
 			work+= '</div>'
-			work+= '<div class="work-line01">'
+			work+= '<div class="work-line01 work-address">'
 			work+= 	'<img src="assets/坐标.png" class="img"/>'
 			work+= 	'<span class="work-text05">'+re.Address+'</span>'
 			

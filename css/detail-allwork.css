@@ -22,63 +22,63 @@
 .work-text02{
 	font-family:"微软雅黑";
 	font-weight: bold;
-	font-size: 36px;
+	font-size: 24px;
 	color: #4A4A4A;
 }
 .work-text111{
 	font-family:"微软雅黑";
-	font-size: 36px;
+	font-size: 24px;
 	color: #4A4A4A;
 }
 .work-text03{
 	font-family:"微软雅黑";
 	font-weight: bold;
-	font-size: 36px;
+	font-size: 24px;
 	color: #FD4545;
 	float: right;
 }
 .work-text04{
 	font-family:"微软雅黑";
-	font-size: 20px;
+	font-size: 16px;
 	color: #9B9B9B;
 }
 .work-text05{
 	display: inline-block;
 	margin-left:10px ;
 	font-family:"微软雅黑";
-	font-size: 20px;
+	font-size: 16px;
 	color: #4A4A4A;
 	margin-right: 40px;	
 }
 .work-text06{
 	font-family:"微软雅黑";
-	font-size: 20px;
+	font-size: 16px;
 	color: #FFFFFF;
 }
 .work-text07{
 	font-family:"微软雅黑";
-	font-size: 18px;
+	font-size: 16px;
 	color: #4A4A4A;
 }
 .work-text08{
 	font-family:"微软雅黑";
 	font-weight: bold;
-	font-size: 28px;
+	font-size: 18px;
 	color: #4A4A4A;
 }
 .work-section01{
 	font-family:"微软雅黑";
-	font-weight: bold;
 	font-size: 14px;
 	color: #4A4A4A;
 	margin-top: 40px;
+	text-indent:2em;
 }
 .work-section02{
 	font-family:"微软雅黑";
-	font-weight: bold;
 	font-size: 14px;
 	color: #4A4A4A;
 	margin-top: 20px;
+	text-indent:2em;
 }
 #phone-button{
 	background-color: #FF6146;
@@ -105,35 +105,48 @@
 	display: inline-block;
     background-color: #f0f0f0;
     border-radius: 40px;
-    height: 40px;
+    height: 27px;
     font-family: "微软雅黑";
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: 1px;
     color: #9B9B9B;
-    padding-top: 8px;
-    width: 236px;
-    padding-left: 50px;
-    margin-left: 5px;
+    padding-top: 2px;
+    width: 197px;
+    padding-left: 38px;
+    /*margin-left: 5px;*/
 }
 
 .imgggg{
 	position: absolute;
-    left: 0px;
+    left: -5px;
     top: -5px;
+    width: 35px;
 }
 .work-text005{
 	display: inline-block;
 	font-family:"微软雅黑";
-	font-size: 20px;
+	font-size: 16px;
 	color: #4A4A4A;	
 }
 .img{
-	margin-top: -10px;
+	margin-top: -6px;
+	width: 30px;
 }
 .jiaji{
 	position: relative;
-	margin-bottom: 18px;
+	margin-bottom: 16px;
 }
 .workname{
-	margin-bottom: 23px;
+	margin-bottom: 13px;
+}
+.work-address img:first-child{
+	width: 18px;
+}
+.work-address{
+	padding-top: 4px ;
+	margin-bottom: 12px;
+}
+.phone-contact{
+	height: 31px;
+    padding-top: 4px;
 }

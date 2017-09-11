@@ -33,8 +33,7 @@ $.ajax({
 		pro += '<span class="work-line" style="margin-bottom:17px;">'
 		pro += 		'<span class="work-text02">'+re.WorkType+'</span><span class="work-text03">'+re.Count+'人</span>'
 		pro += '</span>'
-		pro += '<br />'
-		pro +='<span class="work-line" >'
+		pro +='<span class="work-line work-address" >'
 		pro +=	'<img src="assets/坐标.png"class="img" />'
 		pro +=	'<span class="work-text05">'+re.Address+'</span>'
 		if(re.IsUrgent == true){
@@ -44,13 +43,11 @@ $.ajax({
 			pro +=	'<img src="img/jiaji.png" class="img"/>'
 			pro +=	' <span class="work-text005">加急</span>'
 			pro += '</span>'
-			pro +=	'<br />'
 			pro +=	'<span class="work-line jiaji">'
 			pro +=		'<img src="img/daojishi.png" class="imgggg"/>'
 			pro +=		'<span class="CountDown">距结束&nbsp;'+hour+'：'+minute+'：'+second+'</span>'
 		}
 		pro +=	'</span>'
-		pro += '<br />'
 		pro += '<span class="work-line">'
 		pro += '<div class="btn-group" role="group" style = "margin-right:30px">'
 		pro +=	  '<button type="button" class="btn btn-default dropdown-toggle btn-danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">电话联系</button>'
@@ -61,9 +58,9 @@ $.ajax({
 		pro += 		'<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin='+re.QQNumber+'&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1352197441:51" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>'
 		pro += '</span>'
 		
-		ProvIn01 += '<img src="assets/我.png" />'
+		ProvIn01 += '<img src="assets/我.png" class="img" />'
 		ProvIn01 += 	'<span class="work-text05">&nbsp;'+re.Name+'</span>&nbsp;&nbsp;'
-		ProvIn01 += 	'<img src="assets/电话.png" />'
+		ProvIn01 += 	'<img src="assets/电话.png" class="img" style="width:18px;"/>'
 		ProvIn01 +=  '<span class="work-text05">&nbsp; '+re.Phone+'</span>'
 		
 		ProvIn02 += '<p class="work-section01">'+re.CompanyIntroduce+'</p>'
